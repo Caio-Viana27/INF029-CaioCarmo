@@ -1,0 +1,4 @@
+# ignora todos os arquivos .exe
+*.exe
+# ignora todos os arquivos .txt
+*.txt

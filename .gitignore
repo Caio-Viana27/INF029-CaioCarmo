@@ -3,7 +3,5 @@
 *.exe
 # ignora todos os arquivos .txt
 *.txt
-# ignora todos os arquivos .md
-*.md
 >>>>>>> 12f422b (inicial commit to inicialize)
 *.txt

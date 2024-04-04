@@ -20,7 +20,6 @@ typedef struct {
   int idade[data];
 } ordenarData;
 
-int main();
 int menuProfessor();
 int cadastrarProfessor(Professor listaProfessor[], int qtdProfessor);
 int atualizarProfessor(Professor listaProfessor[], int qtdProfessor);
@@ -37,11 +36,11 @@ void char_captilize_Professor (Professor listaProfessor[], int qtdProfessor);
 char char_captilize (char sexo);
 
 void quicksort(char sortedListProfessor[][max_nome], int qtdProfessor);
-void quicksort_recursion(char sortedListProfessor[][max_nome],int menor_index, int qtdProfessor);
+void quisort_recursion(char sortedListProfessor[][max_nome],int menor_index, int qtdProfessor);
 int partition(char sortedListProfessor[][max_nome],int menor_index, int qtdProfessor);
 void copiarProfessor(Professor listaProfessor[], char sortedListProfessor[][max_nome], int qtdProfessor);
 void quicksortData(ordenarData sortedListData[], int qtdProfessor);
-void quicksort_recursionData(ordenarData sortedListData[],int menor_index, int qtdProfessor);
+void quisort_recursionData(ordenarData sortedListData[],int menor_index, int qtdProfessor);
 int partitionData(ordenarData sortedListData[],int menor_index, int qtdProfessor);
 void copiarProfessorData(Professor listaProfessor[], ordenarData sortedListData[], int qtdProfessor);
 
@@ -129,12 +128,13 @@ int menuProfessor() {
 int cadastrarProfessor(Professor listaProfessor[], int qtdProfessor) {
 
   int sair = 1;
+  int i;
 
   if (qtdProfessor < max_tam) {
 
     while(sair != 0) {
 
-      validarMatriculaProfessor(listaProfessor, qtdProfessor); 
+       validarMatriculaProfessor(listaProfessor, qtdProfessor); 
 
       validarNomeProfessor(listaProfessor, qtdProfessor);
 
@@ -436,7 +436,7 @@ int validarMatriculaProfessor( Professor listaProfessor[], int qtdProfessor) {
 }
 
 int validarSexoProfessor(Professor listaProfessor[], int qtdProfessor) {
-
+  
   int valido = 1;
 
   while(valido == 1) {
@@ -522,7 +522,7 @@ int validarCpfProfessor(Professor listaProfessor[], int qtdProfessor) {
 }
 
 int validarNomeProfessor(Professor listaProfessor[], int qtdProfessor) {
-
+  
   int valido = 1;
 
   printf("Digite o nome completo: ");
@@ -574,15 +574,15 @@ char char_captilize (char sexo) {
 }
 
 void quicksort(char sortedList[][max_nome], int qtdProfessor) {
-  quicksort_recursion(sortedList, 0, qtdProfessor-1);
+  quisort_recursion(sortedList, 0, qtdProfessor-1);
 }
 
-void quicksort_recursion(char sortedList[][max_nome],int menor_index, int qtdProfessor) {
+void quisort_recursion(char sortedList[][max_nome],int menor_index, int qtdProfessor) {
 
   if (menor_index < qtdProfessor) {
     int pivot_index = partition(sortedList, menor_index, qtdProfessor);
-    quicksort_recursion(sortedList, menor_index, pivot_index-1);
-    quicksort_recursion(sortedList, pivot_index+1, qtdProfessor);
+    quisort_recursion(sortedList, menor_index, pivot_index-1);
+    quisort_recursion(sortedList, pivot_index+1, qtdProfessor);
   }
 }
 
@@ -628,15 +628,15 @@ void copiarProfessorData(Professor listaProfessor[], ordenarData sortedListData[
 }
 
 void quicksortData(ordenarData sortedListData[], int qtdProfessor) {
-  quicksort_recursionData(sortedListData, 0, qtdProfessor-1);
+  quisort_recursionData(sortedListData, 0, qtdProfessor-1);
 }
 
-void quicksort_recursionData(ordenarData sortedListData[],int menor_index, int qtdProfessor) {
+void quisort_recursionData(ordenarData sortedListData[],int menor_index, int qtdProfessor) {
 
   if (menor_index < qtdProfessor) {
     int pivot_index = partitionData(sortedListData, menor_index, qtdProfessor);
-    quicksort_recursionData(sortedListData, menor_index, pivot_index-1);
-    quicksort_recursionData(sortedListData, pivot_index+1, qtdProfessor);
+    quisort_recursionData(sortedListData, menor_index, pivot_index-1);
+    quisort_recursionData(sortedListData, pivot_index+1, qtdProfessor);
   }
 }
 

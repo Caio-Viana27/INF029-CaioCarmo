@@ -19,7 +19,6 @@
 #define DESMATRICULAR_FALHOU -10
 #define true 1
 
-int main();
 int menuDisciplina();
 int cadastrarDisciplina(Disciplina listaDisciplina[], int qtdDisciplina);
 int atualizarDisciplina(Disciplina listaDisciplina[], int qtdDisciplina, Professor listaProfessor[], int qtdProfessor);
@@ -168,6 +167,8 @@ int sair = 1;
 
     fprintf (arquivoDisciplina, "Semestre: %d\n", listaDisciplina[qtdDisciplina].Semestre);
 
+    int vagas;
+
     printf("Digite o número de vagas da disciplina: ");
     scanf("%d", &listaDisciplina[qtdDisciplina].vagas);
     getchar();
@@ -186,7 +187,7 @@ int sair = 1;
   }
 }
 
-void listarDisciplina(Disciplina listaDisciplina[], int qtdDisciplina) {
+void listarDisciplina(Disciplina istaDisciplina[], int qtdDisciplina) {
 
    if (qtdDisciplina == 0) {
     printf("Não há Disciplinas cadastradas!\n");
@@ -228,7 +229,7 @@ void listarDisciplina(Disciplina listaDisciplina[], int qtdDisciplina) {
           printf("Alunos matriculados: %d\n", listaDisciplina[i].AlunosMatriculados);
         }
      break;
-
+     
      case 1:
         printf("----------------------------------------\n");
         printf("| Lista de Disciplina(s):              |\n");
@@ -250,7 +251,7 @@ void listarDisciplina(Disciplina listaDisciplina[], int qtdDisciplina) {
           printf("----------------------------------------\n");
         }
      break;
-
+     
      case 2:
         for (int i = 0; i < qtdDisciplina; i++) {
           if (listaDisciplina[i].vagas > 40) {
@@ -377,7 +378,7 @@ int matricularAluno(Disciplina listaDisciplina[], Aluno listaAluno[], int qtdDis
     printf("| Selecione a Disciplina:              |\n");
     printf("----------------------------------------\n");
     int i;
-    for(i = 0; i < qtdDisciplina; i++) {
+    for(int i = 0; i < qtdDisciplina; i++) {
       printf("Digite %d para selecionar: %s", i, listaDisciplina[i].NomeDisciplina);
     }
     scanf("%d", &selecionarDisciplina);
@@ -446,6 +447,8 @@ int desmatricularAluno(Disciplina listaDisciplina[], Aluno listaAluno[], int qtd
       printf("Numero invalido!\n");
       matricularAluno(listaDisciplina, listaAluno, qtdDisciplina, qtdAluno);
     }
+
+    /* int qtdAlunosMatriculados = listaDisciplina[selecionarDisciplina].AlunosMatriculados; */
 
     printf("----------------------------------------\n");
     printf("| Selecione o Aluno:                   |\n");

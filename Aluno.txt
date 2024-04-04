@@ -1,5 +1,0 @@
-Matricula: 13
-Aluno: CAIO VIANA TEIXEIRA CARMO
-Sexo: M
-CPF: 86593539511
-Data de Nascimento: 27/7/2003

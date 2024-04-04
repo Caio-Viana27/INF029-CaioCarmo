@@ -19,7 +19,6 @@ typedef struct {
   int idade[data];
 } ordenarData;
 
-int main();
 int menuAluno();
 int cadastrarAluno(Aluno listaAluno[], int qtdAluno);
 int atualizarAluno(Aluno listaAluno[], int qtdAluno);
@@ -36,12 +35,12 @@ void char_captilize_Aluno (Aluno listaAluno[], int qtdAluno);
 char char_captilize (char sexo);
 
 void quicksort(char sortedList[][max_nome], int qtdAluno);
-void quicksort_recursion(char sortedList[][max_nome],int menor_index, int qtdAluno);
+void quisort_recursion(char sortedList[][max_nome],int menor_index, int qtdAluno);
 int partition(char sortedList[][max_nome],int menor_index, int qtdAluno);
 void copiarAluno(Aluno listaAluno[], char sortedList[][max_nome], int qtdAluno);
 void copiarAlunoData(Aluno listaAluno[], ordenarData sortedListData[], int qtdAluno);
 void quicksortData(ordenarData sortedListData[], int qtdAluno);
-void quicksort_recursionData(ordenarData sortedListData[],int menor_index, int qtdAluno);
+void quisort_recursionData(ordenarData sortedListData[],int menor_index, int qtdAluno);
 int partitionData(ordenarData sortedListData[],int menor_index, int qtdAluno);
 
 Aluno listaAluno[max_tam];

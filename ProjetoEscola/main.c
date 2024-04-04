@@ -30,7 +30,7 @@ int main(void) {
 
   int opcao;
 
-  while(opcao!=0){
+  while(opcao != 0){
 
     opcao = menuPrincipal();
 
@@ -54,7 +54,7 @@ int main(void) {
           printf("Opção inválida");
         break;
       }
-  }
+  }  
   return 0;
 }
 
@@ -69,7 +69,7 @@ int menuPrincipal() {
   printf("|  1 - Aluno                           |\n");
   printf("|  2 - Professor                       |\n");
   printf("|  3 - Disciplina                      |\n");
-  printf("|  4 - Buscar Pessoas                  |\n");
+  printf("|  4 - Lista de Pessoas                |\n");
   printf("----------------------------------------\n");
   scanf("%d", &opcao);
   system("clear");
@@ -83,40 +83,40 @@ void listarPessoas (Aluno listaAluno[], int qtdAluno, Professor listaProfessor[]
   if (qtdAluno == 0 && qtdProfessor == 0) {
     printf("Não há nenhuma pessoa cadastrada!\n");
   }else {
-    
+
     char substring[max_nome];
 
     char listaTempAluno[max_tam][max_nome];
     char listaTempProfessor[max_tam][max_nome];
 
-   copiarAluno(listaAluno, listaTempAluno, qtdAluno);
-   copiarProfessor(listaProfessor, listaTempProfessor, qtdProfessor);
+    copiarAluno(listaAluno, listaTempAluno, qtdAluno);
+    copiarProfessor(listaProfessor, listaTempProfessor, qtdProfessor);
 
     printf("----------------------------------------\n");
     printf("|  Digite no mínimo 3 letras:          |\n");
     printf("----------------------------------------\n");
-    
+
     getchar();
     printf("Nome: ");
     fgets(substring, max_nome, stdin);
-    
+
     substring_captilize (substring);
-    
+
     printf("----------------------------------------\n");
     printf("|  Lista de pessoas:                   | \n");
     printf("----------------------------------------\n");
 
-    
-    
+
+
     for (int i = 0; i < qtdAluno; i++) {
- 
+
       if (Search_string (listaTempAluno[i], substring) == 1) {
          printf("Aluno: %s\n", listaTempAluno[i]);
       }
     }
-    
+
     for (int i = 0; i < qtdProfessor; i++) {
-    
+
       if (Search_string (listaTempProfessor[i], substring) == 1) {
         printf("Professor: %s\n", listaTempProfessor[i]);
       }
@@ -129,7 +129,7 @@ int Search_string (char string[], char substring[]) {
   int found = 0;
   int i;
 
-for (i = 0; i < 3; i++) {
+  for (i = 0; i < 3; i++) {
     if (string[i] == substring[i]) {
       found = 1;
     } else {

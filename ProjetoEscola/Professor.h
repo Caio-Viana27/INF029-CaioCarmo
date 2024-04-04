@@ -3,7 +3,7 @@
 #define max_tam 5
 #define data 3
 
-typedef struct {
+  typedef struct {
   int Matricula;
   char Nome[max_nome];
   char Sexo;

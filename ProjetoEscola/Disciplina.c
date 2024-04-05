@@ -77,7 +77,7 @@ int menuDisciplina() {
               qtdDisciplina += 1;
           printf("Disciplina cadastrada com sucesso\n");
         }else if (opcao == CADASTRO_FALHOU) {
-          printf("Não foi possível cadastrar a Disciplina\n");
+          printf("Nao foi possivel cadastrar a Disciplina\n");
         }         
         if(opcao == CADASTRO_SUCESSO || opcao == CADASTRO_FALHOU)
         opcao = menuDisciplina(qtdDisciplina);
@@ -89,7 +89,7 @@ int menuDisciplina() {
         if (opcao == CADASTRO_ATUALIZADO) {
           printf("Disciplina Atualizada com sucesso!\n");
         }else if (opcao == ATUALIZAR_FALHOU) {
-          printf("Não foi possível Atualizar o Disciplina!\n");
+          printf("Nao foi possivel Atualizar o Disciplina!\n");
         }
         if(opcao == CADASTRO_ATUALIZADO || opcao == ATUALIZAR_FALHOU)
         opcao = menuDisciplina(qtdDisciplina);
@@ -100,7 +100,7 @@ int menuDisciplina() {
         if (opcao == MATRICULA_DISCIPLINA_SUCESSO) {
           printf("Aluno matriculado com sucesso!\n");
         }else if (opcao == MATRICULA_DISCIPLINA_FALHOU) {
-          printf("Não foi possível matricular o aluno!\n");
+          printf("Não foi possivel matricular o aluno!\n");
         }         
         if(opcao == MATRICULA_DISCIPLINA_SUCESSO || opcao == MATRICULA_DISCIPLINA_FALHOU)
         opcao = menuDisciplina(qtdDisciplina);
@@ -111,7 +111,7 @@ int menuDisciplina() {
         if (opcao == DESMATRICULAR_SUCESSO) {
         printf("Aluno desmatriculado com sucesso!\n");
         }else if (opcao == DESMATRICULAR_SUCESSO) {
-        printf("Não foi possível desmatricular o aluno!\n");
+        printf("Nao foi possivel desmatricular o aluno!\n");
         }         
         if(opcao == DESMATRICULAR_SUCESSO || opcao == DESMATRICULAR_SUCESSO)
         opcao = menuDisciplina(qtdDisciplina);
@@ -122,7 +122,7 @@ int menuDisciplina() {
         if (opcao == MATRICULA_DISCIPLINA_SUCESSO) {
         printf("Professor matriculado com sucesso\n");
         }else if (opcao == MATRICULA_DISCIPLINA_FALHOU) {
-        printf("Não foi possível matricular o Professor\n");
+        printf("Nao foi possivel matricular o Professor\n");
         }         
         if(opcao == MATRICULA_DISCIPLINA_SUCESSO || opcao == MATRICULA_DISCIPLINA_FALHOU)
         opcao = menuDisciplina(qtdDisciplina);
@@ -134,7 +134,7 @@ int menuDisciplina() {
             qtdDisciplina--;
         printf("Discilina excluida com sucesso\n");
         }else if (opcao == EXCLUIR_FALHOU) {
-        printf("Não foi possível excluir a Disciplina\n");
+        printf("Nao foi possivel excluir a Disciplina\n");
         }         
         if(opcao == CADASTRO_EXCLUIDO || opcao == EXCLUIR_FALHOU)
         opcao = menuDisciplina(qtdDisciplina);
@@ -145,7 +145,7 @@ int menuDisciplina() {
         opcao = menuDisciplina(qtdDisciplina);
     break;
     default:
-      printf("Opção inválida");
+      printf("Opçao invalida");
     break;
   }
   return opcao;
@@ -170,7 +170,7 @@ int sair = 1;
 
     int vagas;
 
-    printf("Digite o número de vagas da disciplina: ");
+    printf("Digite o numero de vagas da disciplina: ");
     scanf("%d", &listaDisciplina[qtdDisciplina].vagas);
     getchar();
 
@@ -191,7 +191,7 @@ int sair = 1;
 void listarDisciplina(Disciplina istaDisciplina[], int qtdDisciplina) {
 
    if (qtdDisciplina == 0) {
-    printf("Não há Disciplinas cadastradas!\n");
+    printf("Nao ha Disciplinas cadastradas!\n");
   }else {
 
    int selecionar;
@@ -209,7 +209,7 @@ void listarDisciplina(Disciplina istaDisciplina[], int qtdDisciplina) {
    getchar();
 
    if (selecionar > 2 || selecionar < 0) {
-     printf("Opção inválida\n");
+     printf("Opcao invalida\n");
      return;
    }
 
@@ -270,7 +270,7 @@ int ExcluirDisciplina(Disciplina listaDisciplina[], int qtdDisciplina) {
   int excluir;
 
   if (qtdDisciplina == 0) {
-    printf("Não há disciplina(s) cadastrada(s)\n");
+    printf("Nao ha disciplina(s) cadastrada(s)\n");
     return EXCLUIR_FALHOU;
   }else {
     printf("----------------------------------------\n");
@@ -296,7 +296,7 @@ int atualizarDisciplina(Disciplina listaDisciplina[], int qtdDisciplina
   int selecionar;
 
   if (qtdDisciplina == 0) {
-    printf("Não há Disciplinas cadastradas!\n");
+    printf("Nao ha Disciplinas cadastradas!\n");
     return ATUALIZAR_FALHOU;
   }else {
     printf("----------------------------------------\n");
@@ -355,7 +355,7 @@ int atualizarDisciplina(Disciplina listaDisciplina[], int qtdDisciplina
           }
       break;
       default:
-        printf("Opção inválida");
+        printf("Opcao invalida\n");
       break;
     }
     return CADASTRO_ATUALIZADO;
@@ -415,7 +415,7 @@ int matricularAluno(Disciplina listaDisciplina[], Aluno listaAluno[], int qtdDis
       }
       return MATRICULA_DISCIPLINA_SUCESSO;
     }else {
-      printf("Não há vagas disponiveis!\n");
+      printf("Nao ha vagas disponiveis!\n");
       return MATRICULA_DISCIPLINA_FALHOU;
     }
   }
@@ -427,10 +427,10 @@ int desmatricularAluno(Disciplina listaDisciplina[], Aluno listaAluno[], int qtd
   int selecionarDisciplina;
 
   if (qtdDisciplina == 0) {
-    printf("Não há Disciplinas cadastradas!\n");
+    printf("Nao ha Disciplinas cadastradas!\n");
     return DESMATRICULAR_FALHOU;
   }else if(qtdAluno == 0) {
-    printf("Não há Aluno(s) cadastrado(s)!\n");
+    printf("Nao ha Aluno(s) cadastrado(s)!\n");
     return DESMATRICULAR_FALHOU;
   }else {
 
@@ -485,10 +485,10 @@ int matricularProfessor(Disciplina listaDisciplina[], Professor listaProfessor[]
   int selecionarDisciplina;
 
   if (qtdDisciplina == 0) {
-    printf("Não há Disciplinas cadastradas!\n");
+    printf("Nao ha Disciplinas cadastradas!\n");
     return MATRICULA_DISCIPLINA_FALHOU;
   }else if(qtdProfessor == 0) {
-    printf("Não há professor(es) cadastrado(s)!\n");
+    printf("Nao ha professor(es) cadastrado(s)!\n");
     return MATRICULA_DISCIPLINA_FALHOU;
   }else {
     printf("----------------------------------------\n");
@@ -506,7 +506,7 @@ int matricularProfessor(Disciplina listaDisciplina[], Professor listaProfessor[]
       printf("Numero invalido!\n");
       matricularProfessor(listaDisciplina, listaProfessor, qtdDisciplina, qtdProfessor);
     }else if (listaDisciplina[selecionarDisciplina].ProfessorMatriculado > 0) {
-      printf("Disciplina já possui professor!\n");
+      printf("Disciplina ja possui professor!\n");
       return MATRICULA_DISCIPLINA_FALHOU;
     }
     printf("----------------------------------------\n");
@@ -536,14 +536,14 @@ int validarCodigoDisciplina( Disciplina listaDisciplina[], int qtdDisciplina) {
     int valido = 1;
 
     while (valido == 1) {
-        printf("\nDigite o numero do código: ");
+        printf("\nDigite o numero do codigo: ");
         if (scanf("%d", &listaDisciplina[qtdDisciplina].Codigo) != true) {
-          printf("Digite um válido!\n");
+          printf("Digite um valido!\n");
           while (getchar() != '\n'); 
           continue;
       }
       if (listaDisciplina[qtdDisciplina].Codigo <= 0 || listaDisciplina[qtdDisciplina].Codigo > 9999999) {
-          printf("Digite um código válido!\n");
+          printf("Digite um codigo valido!\n");
       } else {
           int codigoExistente = 0;
           for (int i = 0; i < qtdDisciplina; i++) {
@@ -553,7 +553,7 @@ int validarCodigoDisciplina( Disciplina listaDisciplina[], int qtdDisciplina) {
               }
           }
           if (codigoExistente) {
-            printf("Este código ja esta sendo utilizado!\n");
+            printf("Este codigo ja esta sendo utilizado!\n");
           } else {
             valido = 0;
             fprintf(arquivoDisciplina, "Codigo: %d\n", listaDisciplina[qtdDisciplina].Codigo);
@@ -578,7 +578,7 @@ int validarNomeDisciplina(Disciplina listaDisciplina[], int qtdDisciplina){
         if ((teste >= 'A' && teste <= 'Z') || (teste >= 'a' && teste <= 'z')) {
             valido = 0;
         } else {
-            printf("Digite um nome válido para a disciplina: ");
+            printf("Digite um nome valido para a disciplina: ");
         }
     }
     fprintf(arquivoDisciplina, "Disciplina: %s", listaDisciplina[qtdDisciplina].NomeDisciplina);

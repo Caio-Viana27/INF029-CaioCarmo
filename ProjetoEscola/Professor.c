@@ -85,7 +85,7 @@ int menuProfessor() {
            qtdProfessor += 1;
            printf("Professor cadastrado com sucesso!\n");
         }else if (opcao == CADASTRO_FALHOU) {
-           printf("Não foi possível cadastrar o professor!\n");
+           printf("Nao foi possivel cadastrar o professor!\n");
         }         
         if(opcao == CADASTRO_SUCESSO || opcao == CADASTRO_FALHOU)
           opcao = menuProfessor(qtdProfessor);
@@ -97,7 +97,7 @@ int menuProfessor() {
         if (opcao == CADASTRO_ATUALIZADO) {
           printf("Professor(a) Atualizado(a) com sucesso!\n");
         }else if (opcao == ATUALIZAR_FALHOU) {
-          printf("Não foi possível Atualizar o Professor!\n");
+          printf("Nao foi possivel Atualizar o Professor!\n");
         }         
         if(opcao == CADASTRO_ATUALIZADO || opcao == ATUALIZAR_FALHOU)
         opcao = menuProfessor(qtdProfessor);
@@ -109,7 +109,7 @@ int menuProfessor() {
             qtdProfessor--;
           printf("Professor(a) excluido(a) com sucesso!\n");
         }else if (opcao == EXCLUIR_FALHOU) {
-          printf("Não foi possível excluir o Professor!\n");
+          printf("Nao foi possivel excluir o Professor!\n");
         }         
         if(opcao == CADASTRO_EXCLUIDO || opcao == EXCLUIR_FALHOU)
         opcao = menuProfessor(qtdProfessor);
@@ -120,7 +120,7 @@ int menuProfessor() {
         menuProfessor(qtdProfessor);
     break;
     default:
-      printf("Opção inválida");
+      printf("Opçao invalida");
     break;
   }
   return opcao;
@@ -160,7 +160,7 @@ void listarProfessor(Professor listaProfessor[], int qtdProfessor) {
   char sexo;
 
   if (qtdProfessor == 0) {
-    printf("Não há professores cadastrados!\n");
+    printf("Nao ha professores cadastrados!\n");
   }else {
 
 
@@ -173,7 +173,7 @@ void listarProfessor(Professor listaProfessor[], int qtdProfessor) {
     printf("|  1 - listar Professores por Nome     |\n");
     printf("|  2 - listar Prof. por Nascimento     |\n");
     printf("|  3 - listar Profefessores pro sexo   |\n");
-    printf("|  4 - listar aniversariantes do mês   |\n");
+    printf("|  4 - listar aniversariantes do mes   |\n");
     printf("----------------------------------------\n");
     scanf("%d", &selecionar);
     getchar();
@@ -242,7 +242,7 @@ void listarProfessor(Professor listaProfessor[], int qtdProfessor) {
         sexo = char_captilize (sexo);
 
         if(sexo != 'F' && sexo != 'M') {
-            printf("Digite um sexo válido!\n");
+            printf("Digite um sexo valido!\n");
         } else {
           printf("----------------------------------------\n");
           printf("| Lista de Alunos por sexo:             |\n");
@@ -281,7 +281,7 @@ void listarProfessor(Professor listaProfessor[], int qtdProfessor) {
       }
       break;
       default:
-        printf("Opção inválida");
+        printf("Opçao invalida");
       break;
     }
   }
@@ -292,7 +292,7 @@ int ExcluirProfessor(Professor listaProfessor[], int qtdProfessor) {
   int excluir;
 
   if (qtdProfessor == 0) {
-    printf("Não há Professor(es) cadastrado(s)!\n");
+    printf("Não ha Professor(es) cadastrado(s)!\n");
     return EXCLUIR_FALHOU;
   }else {
     printf("-----------------------------------\n");
@@ -317,7 +317,7 @@ int atualizarProfessor(Professor listaProfessor[], int qtdProfessor) {
   int selecionar;
 
   if (qtdProfessor == 0) {
-    printf("Não há Professor(es) cadastrado(s)!\n");
+    printf("Nao ha Professor(es) cadastrado(s)!\n");
     return ATUALIZAR_FALHOU;
   }else {
     printf("----------------------------------------\n");
@@ -382,13 +382,13 @@ int DataNascimentoProfessor(Professor listaProfessor[], int atualizar) {
       getchar();
 
       if (listaProfessor[atualizar].idade[0] <= 0 || listaProfessor[atualizar].idade[0] > 31) {
-        printf("Por favor entre um dia válido\n");
+        printf("Por favor entre um dia valido\n");
 
       }else if (listaProfessor[atualizar].idade[1] <= 0 || listaProfessor[atualizar].idade[1] > 12) {
-        printf("Por favor entre um mes válido\n");
+        printf("Por favor entre um mes valido\n");
 
       }else if (listaProfessor[atualizar].idade[2] < 1900 || listaProfessor[atualizar].idade[2] > 2024) {
-        printf("Por favor entre um ano válido\n");
+        printf("Por favor entre um ano valido\n");
 
       }else {
         valido = 0;
@@ -410,13 +410,13 @@ int validarMatriculaProfessor( Professor listaProfessor[], int qtdProfessor) {
     while (valido == 1) {
         printf("\nDigite o numero da Matricula: ");
         if (scanf("%d", &listaProfessor[qtdProfessor].Matricula) != true) {
-            printf("Digite uma matricula válida!\n");
+            printf("Digite uma matricula valida!\n");
             while (getchar() != '\n'); 
             continue;
         }
 
         if (listaProfessor[qtdProfessor].Matricula <= 0 || listaProfessor[qtdProfessor].Matricula > 9999999) {
-            printf("Digite uma matricula válida!\n");
+            printf("Digite uma matricula valida!\n");
         } else {
             int matriculaExistente = 0;
             for (int i = 0; i < qtdProfessor; i++) {
@@ -447,7 +447,7 @@ int validarSexoProfessor(Professor listaProfessor[], int qtdProfessor) {
 
     if(listaProfessor[qtdProfessor].Sexo != 'F' && listaProfessor[qtdProfessor].Sexo != 'f' &&
       listaProfessor[qtdProfessor].Sexo != 'M' && listaProfessor[qtdProfessor].Sexo != 'm') {
-        printf("Digite um sexo válido!\n");
+        printf("Digite um sexo valido!\n");
     } else {
         valido = 0;
     }
@@ -470,7 +470,7 @@ int validarCpfProfessor(Professor listaProfessor[], int qtdProfessor) {
         int i;
         for (i = 0; i < 11; i++) {
             if (listaProfessor[qtdProfessor].CPF[i] < '0' || listaProfessor[qtdProfessor].CPF[i] > '9') {
-                printf("Digite um CPF válido.\n");
+                printf("Digite um CPF valido.\n");
                 break;
             }
             digitos[i] = listaProfessor[qtdProfessor].CPF[i] - '0';
@@ -487,7 +487,7 @@ int validarCpfProfessor(Professor listaProfessor[], int qtdProfessor) {
                 icont = 1;
             }
             if (icont > 5) {
-                printf("CPF inválido devido a dígitos repetidos.\n");
+                printf("CPF invalido devido a digitos repetidos.\n");
                 valido = 1;
                 break;
             }
@@ -515,7 +515,7 @@ int validarCpfProfessor(Professor listaProfessor[], int qtdProfessor) {
           valido = 0;
           fprintf (arquivoProfessor, "CPF: %s\n", listaProfessor[qtdProfessor].CPF);
         } else {
-          printf("CPF inválido.\n");
+          printf("CPF invalido.\n");
         }
     }
 
@@ -537,7 +537,7 @@ int validarNomeProfessor(Professor listaProfessor[], int qtdProfessor) {
     if ((teste >= 'A' && teste <= 'Z') || (teste >= 'a' && teste <= 'z')) {
       valido = 0;
     } else {
-      printf("Digite um nome válido: ");
+      printf("Digite um nome valido: ");
 
     }
   }

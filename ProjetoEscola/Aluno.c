@@ -83,7 +83,7 @@ int menuAluno() {
           qtdAluno += 1;
         printf("Aluno(a) cadastrado(a) com sucesso!\n");
         }else if (opcao == CADASTRO_FALHOU) {
-          printf("Não foi possível cadastrar o aluno!\n");
+          printf("Nao foi possivel cadastrar o aluno!\n");
         }
         if(opcao == CADASTRO_SUCESSO || opcao == CADASTRO_FALHOU)
         opcao = menuAluno(qtdAluno);
@@ -95,7 +95,7 @@ int menuAluno() {
         if (opcao == CADASTRO_ATUALIZADO) {
           printf("Aluno(a) Atualizado(a) com sucesso!\n");
         }else if (opcao == ATUALIZAR_FALHOU) {
-          printf("Não foi possível Atualizar o aluno!\n");
+          printf("Nao foi possivel Atualizar o aluno!\n");
         }         
         if(opcao == CADASTRO_ATUALIZADO || opcao == ATUALIZAR_FALHOU)
           opcao = menuAluno(qtdAluno);
@@ -107,7 +107,7 @@ int menuAluno() {
           qtdAluno--;
           printf("Aluno(a) excluido(a) com sucesso!\n");
         }else if (opcao == EXCLUIR_FALHOU) {
-          printf("Não foi possível excluir o aluno!\n");
+          printf("Nao foi possivel excluir o aluno!\n");
         }
         if(opcao == CADASTRO_EXCLUIDO || opcao == EXCLUIR_FALHOU)
         opcao = menuAluno(qtdAluno);
@@ -118,7 +118,7 @@ int menuAluno() {
         menuAluno(qtdAluno);
         break;
     default:
-      printf("Opção inválida");
+      printf("Opçao invalida");
     break;
   }
   return opcao;
@@ -159,7 +159,7 @@ void listarAluno(Aluno listaAluno[], int qtdAluno) {
    char sexo;
 
    if (qtdAluno == 0) {
-    printf("Não há Aluno(s) cadastrado(s)!\n");
+    printf("Nao ha Aluno(s) cadastrado(s)!\n");
   }else {
 
     printf("----------------------------------------\n");
@@ -170,8 +170,8 @@ void listarAluno(Aluno listaAluno[], int qtdAluno) {
     printf("|  1 - listar Alunos por Nome          |\n");
     printf("|  2 - listar Alunos por Nascimento    |\n");
     printf("|  3 - listar Alunos pro sexo          |\n");
-    printf("|  4 - listar aniversariantes do mês   |\n");
-    printf("|  5 - listar Alunos com +3 matérias   |\n");
+    printf("|  4 - listar aniversariantes do mes   |\n");
+    printf("|  5 - listar Alunos com +3 materias   |\n");
     printf("----------------------------------------\n");
     scanf("%d", &selecionar);
     getchar();
@@ -242,7 +242,7 @@ void listarAluno(Aluno listaAluno[], int qtdAluno) {
         sexo = char_captilize (sexo);
 
         if(sexo != 'F' && sexo != 'M') {
-            printf("Digite um sexo válido!\n");
+            printf("Digite um sexo váalido!\n");
         } else {
 
           printf("----------------------------------------\n");
@@ -267,7 +267,7 @@ void listarAluno(Aluno listaAluno[], int qtdAluno) {
           printf("Mes invalido!\n");
         } else {
           printf("----------------------------------------\n");
-          printf("| Aniversariantes do mês:              |\n");
+          printf("| Aniversariantes do mes:              |\n");
           printf("----------------------------------------\n");
 
           for(int i = 0; i < qtdAluno; i++){
@@ -285,7 +285,7 @@ void listarAluno(Aluno listaAluno[], int qtdAluno) {
 
       case 5:
         printf("----------------------------------------\n");
-          printf("| Alunos matriculados em +3 matérias:  |\n");
+          printf("| Alunos matriculados em +3 materias:  |\n");
           printf("----------------------------------------\n");
 
         for (int i = 0; i < qtdAluno; i++) {
@@ -296,7 +296,7 @@ void listarAluno(Aluno listaAluno[], int qtdAluno) {
         }
       break;
       default:
-        printf("Opção inválida");
+        printf("Opção invalida");
       break;
     }
   }
@@ -307,7 +307,7 @@ int ExcluirAluno(Aluno listaAluno[], int qtdAluno) {
   int excluir;
 
   if (qtdAluno == 0) {
-    printf("Não há aluno(s) cadastrado(s)!\n");
+    printf("Nao ha aluno(s) cadastrado(s)!\n");
     return EXCLUIR_FALHOU;
   }else {
     printf("----------------------------------------\n");
@@ -332,7 +332,7 @@ int atualizarAluno(Aluno listaAluno[], int qtdAluno) {
   int selecionar;
 
   if (qtdAluno == 0) {
-    printf("Não há aluno(s) cadastrado(s)!\n");
+    printf("Nao ha aluno(s) cadastrado(s)!\n");
     return ATUALIZAR_FALHOU;
   }else {
     printf("----------------------------------------\n");
@@ -372,7 +372,7 @@ int atualizarAluno(Aluno listaAluno[], int qtdAluno) {
        DataNascimentoAluno(listaAluno, atualizar);
       break;
       default:
-          printf("Opção inválida!\n");
+          printf("Opçao invalida!\n");
           atualizarAluno(listaAluno, qtdAluno);
       break;
     }
@@ -399,13 +399,13 @@ int DataNascimentoAluno(Aluno listaAluno[], int qtdAluno) {
       getchar();
 
       if (listaAluno[qtdAluno].idade[0] <= 0 || listaAluno[qtdAluno].idade[0] > 31) {
-        printf("Por favor entre um dia válido\n");
+        printf("Por favor entre um dia valido\n");
 
       }else if (listaAluno[qtdAluno].idade[1] <= 0 || listaAluno[qtdAluno].idade[1] > 12) {
-        printf("Por favor entre um mes válido\n");
+        printf("Por favor entre um mes valido\n");
 
       }else if (listaAluno[qtdAluno].idade[2] < 1900 || listaAluno[qtdAluno].idade[2] > 2024) {
-        printf("Por favor entre um ano válido\n");
+        printf("Por favor entre um ano valido\n");
 
       }else {
         valido = 0;
@@ -427,12 +427,12 @@ int validarMatriculaAluno( Aluno listaAluno[], int qtdAluno) {
     while (valido == 1) {
       printf("\nDigite o numero da Matricula: ");
       if (scanf("%d", &listaAluno[qtdAluno].Matricula) != true) {
-        printf("Digite uma matricula válida!\n");
+        printf("Digite uma matricula valida!\n");
         while (getchar() != '\n'); 
         continue;
       }
       if (listaAluno[qtdAluno].Matricula <= 0 || listaAluno[qtdAluno].Matricula > 9999999) {
-          printf("Digite uma matricula válida!\n");
+          printf("Digite uma matricula valida!\n");
       }else {
         int matriculaExistente = 0;
         for (int i = 0; i < qtdAluno; i++) {
@@ -463,7 +463,7 @@ int validarSexoAluno(Aluno listaAluno[], int qtdAluno) {
 
       if(listaAluno[qtdAluno].Sexo != 'F' && listaAluno[qtdAluno].Sexo != 'f' &&
          listaAluno[qtdAluno].Sexo != 'M' && listaAluno[qtdAluno].Sexo != 'm') {
-          printf("Digite um sexo válido!\n");
+          printf("Digite um sexo valido!\n");
       } else {
           valido = 0;
       }
@@ -487,7 +487,7 @@ int validarCpfAluno(Aluno listaAluno[], int qtdAluno) {
         int i;
         for (i = 0; i < 11; i++) {
             if (listaAluno[qtdAluno].CPF[i] < '0' || listaAluno[qtdAluno].CPF[i] > '9') {
-                printf("Digite apenas números.\n");
+                printf("Digite apenas numeros.\n");
                 break;
             }
             digitos[i] = listaAluno[qtdAluno].CPF[i] - '0';
@@ -517,7 +517,7 @@ int validarCpfAluno(Aluno listaAluno[], int qtdAluno) {
                 icont = 1;
             }
             if (icont > 5) {
-                printf("CPF inválido devido a dígitos repetidos.\n");
+                printf("CPF invalido devido a digitos repetidos.\n");
                 valido = 1;
                 break;
             }
@@ -545,7 +545,7 @@ int validarCpfAluno(Aluno listaAluno[], int qtdAluno) {
             valido = 0;
             fprintf (arquivoAluno, "CPF: %s\n", listaAluno[qtdAluno].CPF);
         } else {
-            printf("CPF inválido.\n");
+            printf("CPF invalido.\n");
         }
     }
     return 0;
@@ -566,7 +566,7 @@ int validarNomeAluno(Aluno listaAluno[], int qtdAluno) {
       if ((teste >= 'A' && teste <= 'Z') || (teste >= 'a' && teste <= 'z')) {
         valido = 0;
       } else {
-        printf("Digite um nome válido: ");
+        printf("Digite um nome valido: ");
 
       }
   }

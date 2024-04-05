@@ -106,18 +106,18 @@ void listarPessoas (Aluno listaAluno[], int qtdAluno, Professor listaProfessor[]
     printf("|  Lista de pessoas:                   | \n");
     printf("----------------------------------------\n");
 
-
+/* Search_string (listaTempAluno[i], substring) == 1 */
 
     for (int i = 0; i < qtdAluno; i++) {
 
-      if (Search_string (listaTempAluno[i], substring) == 1) {
+      if (Search_string(listaTempAluno[i], substring)) {
          printf("Aluno: %s\n", listaTempAluno[i]);
       }
     }
 
     for (int i = 0; i < qtdProfessor; i++) {
 
-      if (Search_string (listaTempProfessor[i], substring) == 1) {
+      if (Search_string(listaTempProfessor[i], substring)) {
         printf("Professor: %s\n", listaTempProfessor[i]);
       }
     }
@@ -129,11 +129,17 @@ int Search_string (char string[], char substring[]) {
   int found = 0;
   int i;
 
-  for (i = 0; i < 3; i++) {
-    if (string[i] == substring[i]) {
-      found = 1;
-    } else {
-      found = 0;
+  for (i = 0; string[i] != '\0'; i++) {
+
+    if (string[i] == substring[0]) {
+
+      for (int j = 1; substring[j] != '\0'; j++) {
+        if (string[i+j] != substring[j]) {
+          break;
+        }else if (string[i+j] == substring[j] && substring[j+1] == '\0') {
+          return found = 1;
+        }
+      }
     }
   }
   return found;

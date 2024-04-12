@@ -73,6 +73,11 @@ void testQ1()
     printf("%d\n", q1(str) == 0);
     strcpy(str, "/9/2014");
     printf("%d\n", q1(str) == 0);
+    strcpy(str, "31/4/2014");
+    printf("%d\n", q1(str) == 0);
+    strcpy(str, "30/2/2012");
+    printf("%d\n", q1(str) == 0);
+    
 }
 
 void testQ2()

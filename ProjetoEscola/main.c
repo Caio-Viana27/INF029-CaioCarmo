@@ -51,7 +51,7 @@ int main(void) {
             listarPessoas (listaAluno, qtdAluno, listaProfessor, qtdProfessor);
         break;
         default:
-          printf("Opção inválida");
+          printf("Opçao invalida");
         break;
       }
   }  
@@ -81,7 +81,7 @@ int menuPrincipal() {
 void listarPessoas (Aluno listaAluno[], int qtdAluno, Professor listaProfessor[], int qtdProfessor) {
 
   if (qtdAluno == 0 && qtdProfessor == 0) {
-    printf("Não há nenhuma pessoa cadastrada!\n");
+    printf("Nao ha nenhuma pessoa cadastrada!\n");
   }else {
 
     char substring[max_nome];
@@ -93,7 +93,7 @@ void listarPessoas (Aluno listaAluno[], int qtdAluno, Professor listaProfessor[]
     copiarProfessor(listaProfessor, listaTempProfessor, qtdProfessor);
 
     printf("----------------------------------------\n");
-    printf("|  Digite no mínimo 3 letras:          |\n");
+    printf("|  Digite no minimo 3 letras:          |\n");
     printf("----------------------------------------\n");
 
     getchar();

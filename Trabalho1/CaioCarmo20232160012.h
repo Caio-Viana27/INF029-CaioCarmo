@@ -11,10 +11,10 @@
 //  O aluno deve preencher seus dados abaixo, e implementar as questões do trabalho
 
 //  ----- Dados do Aluno -----
-//  Nome:
-//  email:
-//  Matrícula:
-//  Semestre:
+//  Nome: Caio Viana Teixeira Carmo
+//  email: Caio.vtc27@gmail.com
+//  Matrícula: 20232160012
+//  Semestre: 2
 
 //  Copyright © 2016 Renato Novais. All rights reserved.
 // Última atualização: 07/05/2021
@@ -25,10 +25,10 @@
 
 typedef struct DQ
 {
-    int iDia; 
+    int iDia;
     int iMes;
     int iAno;
-    int valido; // 0 se inválido, e 1 se válido 
+    int valido; // 0 se inválido, e 1 se válido
 
 } DataQuebrada;
 

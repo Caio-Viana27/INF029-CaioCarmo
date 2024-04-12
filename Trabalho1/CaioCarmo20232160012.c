@@ -11,10 +11,10 @@
 //  O aluno deve preencher seus dados abaixo, e implementar as questões do trabalho
 
 //  ----- Dados do Aluno -----
-//  Nome:
-//  email:
-//  Matrícula:
-//  Semestre:
+//  Nome: Caio Viana Teixeira Carmo
+//  email: Caio.vtc27@gmail.com
+//  Matrícula: 20232160012
+//  Semestre: 2
 
 //  Copyright © 2016 Renato Novais. All rights reserved.
 // Última atualização: 07/05/2021 - 19/08/2016
@@ -74,14 +74,12 @@ int teste(int a)
     return val;
 }
 
-
-
 DataQuebrada quebraData(char data[]){
   DataQuebrada dq;
   char sDia[3];
   char sMes[3];
   char sAno[5];
-  int i; 
+  int i;
 
   for (i = 0; data[i] != '/'; i++){
     sDia[i] = data[i];	
@@ -127,12 +125,13 @@ DataQuebrada quebraData(char data[]){
 
   dq.iDia = atoi(sDia);
   dq.iMes = atoi(sMes);
-  dq.iAno = atoi(sAno); 
+  dq.iAno = atoi(sAno);
 
   dq.valido = 1;
 
   return dq;
 }
+
 /*
  Q1 = validar data
 @objetivo
@@ -146,10 +145,88 @@ DataQuebrada quebraData(char data[]){
     Não utilizar funções próprias de string (ex: strtok)   
     pode utilizar strlen para pegar o tamanho da string
  */
+int brake (char data[], char string[], int j) {
+  int i;
+
+  for (i = 0; data[j] != '/' && data[j] != '\0'; i++, j++) {
+    string[i] = data[j];
+    string[i + 1] = '\0';
+  }
+  return j;
+}
+
+int brakeDateRecursion (char data[], char string[], int j) {
+  int index;
+  if (data[j] != '\0') {
+    index = brake (data, string, j);
+  }
+  return index;
+}
+
+void brakeDate (char data[], char dia[3], char mes[3], char ano[5]) {
+  int j = 0;
+  int indexJ;
+  indexJ = brakeDateRecursion (data, dia, j);
+  indexJ = brakeDateRecursion (data, mes, indexJ + 1);
+  indexJ = brakeDateRecursion (data, ano, indexJ + 1);
+}
+
+int searchMonth (DataQuebrada dq, int array[]) {
+  int found = 0;
+
+  for (int i = 0; array[i] != -1; i++) {
+    if (dq.iMes == array[i]) {
+      found = 1;
+      break;
+    }
+  }
+  return found;
+}
+
+int dataValidation (DataQuebrada dq) {
+
+  int Mes30[] = { 4, 6, 9, 11, -1};
+  int Mes31[] = { 1, 3, 5, 7, 8, 10, 12, -1};
+
+  if (dq.iAno < 100) dq.iAno += 2000;
+
+  if (dq.iDia < 1 || dq.iMes < 1|| dq.iAno < 1) {
+    dq.valido = 0;
+    return 0;
+  } else if ( (dq.iAno % 4 == 0 && dq.iAno % 100 != 0) 
+              || (dq.iAno % 4 == 0 && dq.iAno % 100 == 0 && dq.iAno % 400 == 0) ) {
+
+    if (dq.iMes == 2) {
+      if (dq.iDia > 29) return 0;
+
+    } else if (searchMonth(dq, Mes30)) {
+      if (dq.iDia > 30) return 0;
+
+    } else if (searchMonth(dq, Mes31)) {
+      if (dq.iDia > 31) return 0;
+
+    } else return 0;
+
+  } else {
+    if (dq.iMes == 2) {
+      if (dq.iDia > 28) return 0;
+
+    } else if (searchMonth(dq, Mes30)) {
+      if (dq.iDia > 30) return 0;
+
+    } else if (searchMonth(dq, Mes31)) {
+      if (dq.iDia > 31) return 0;
+
+    } else return 0;
+  }
+  return 1;
+}
+
 int q1(char data[])
 {
+  DataQuebrada dq;
   int datavalida = 1;
-
+  
   //quebrar a string data em strings sDia, sMes, sAno
 
   //DataQuebrada dataQuebrada = quebraData(data);
@@ -157,13 +234,64 @@ int q1(char data[])
 
   //printf("%s\n", data);
 
+  char dia[3];
+  char mes[3];
+  char ano[5];
+
+  brakeDate (data, dia, mes, ano);
+
+  dq.iDia = atoi(dia);
+  dq.iMes = atoi(mes);
+  dq.iAno = atoi(ano);
+
+  datavalida = dataValidation (dq);
+
+  //printf("dia: %d\n", dq.iDia);
+  //printf("mes: %d\n", dq.iMes);
+  //printf("ano: %d\n", dq.iAno);
+  //printf("validacao: %d\n", datavalida);
+
   if (datavalida)
       return 1;
   else
       return 0;
 }
 
+/* int i;
+  for (i = 0; data[i] != '/'; i++) {
+    dia[i] = data[i];
+    if (data[i + 1] == '/') {
+      dia[i + 1] = '\0';
+    }
+  }
+  if (i == 0)
+    return 0;
+  
 
+  int j = i + 1;
+  i = 0;
+  for (; data[j] != '/'; j++, i++) {
+    mes[i] = data[j];
+    if (data[j + 1] == '/') {
+      mes[i + 1] = '\0';
+    }
+    //i++;
+  }
+  if (i == 0)
+    return 0;
+  
+
+  j += 1;
+  i = 0;
+  for (; data[j] != '\0'; j++, i++) {
+    ano[i] = data[j];
+    if (data[j + 1] == '\0') {
+      ano[i + 1] = '\0';
+    }
+    //i++;
+  }
+  if (i == 0)
+    return 0; */
 
 /*
  Q2 = diferença entre duas datas

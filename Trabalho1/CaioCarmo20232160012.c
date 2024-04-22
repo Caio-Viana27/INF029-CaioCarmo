@@ -382,9 +382,56 @@ int q3(char *texto, char c, int isCaseSensitive)
         O retorno da função, n, nesse caso seria 1;
 
  */
+
+/* int buscar_Acentacao (char caracter) {
+  char acentos[] = {"~"}
+} */
+
+int searchString (char *strTexto, char *strBusca, int posicoes[30]) {
+  int inicial = 0;
+  int final = 1;
+  int acento = 0;
+  int contador = 0;
+
+  for (int i = 0; strTexto[i] != '\0'; i++) {
+
+    char caractere = strTexto[i];
+
+    /* if (caractere == 'á' || caractere == 'é' || caractere == 'í' || caractere == 'ó' || caractere == 'ú' ||
+        caractere == 'Á' || caractere == 'É' || caractere == 'Í' || caractere == 'Ó' || caractere == 'Ú')
+      acento++; */
+
+    if (strTexto[i] == strBusca[0]) {
+      int posicaoI = i;
+      int found = 1;
+      int j = 1;
+      for (; strBusca[j] != '\0'; j++) {
+
+        if (strTexto[i+j] != strBusca[j]) {
+          found = 0;
+          break;
+        }
+      }
+      if (found) {
+        posicoes[inicial] = (posicaoI + 1) - acento;
+        posicoes[final] = (i + j) - acento;
+        contador++;
+        inicial += 2;
+        final += 2;
+      }
+    }
+  }
+  return contador;
+}
+
 int q4(char *strTexto, char *strBusca, int posicoes[30])
 {
-    int qtdOcorrencias = -1;
+    int qtdOcorrencias = searchString (strTexto, strBusca, posicoes);
+
+    for (int i = 0; posicoes[i] != -1; i++) {
+      printf("%d ", posicoes[i]);
+    }
+    printf("\n");
 
     return qtdOcorrencias;
 }

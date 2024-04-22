@@ -194,7 +194,7 @@ int dataValidation (DataQuebrada dq) {
     dq.valido = 0;
     return 0;
   } else if ( (dq.iAno % 4 == 0 && dq.iAno % 100 != 0) 
-              || (dq.iAno % 4 == 0 && dq.iAno % 100 == 0 && dq.iAno % 400 == 0) ) {
+               || (dq.iAno % 4 == 0 && dq.iAno % 100 == 0 && dq.iAno % 400 == 0) ) {
 
     if (dq.iMes == 2) {
       if (dq.iDia > 29) return 0;
@@ -220,7 +220,7 @@ int dataValidation (DataQuebrada dq) {
     } else return 0;
   }
   return 1;
-}
+}    
 
 int q1(char data[])
 {
@@ -324,7 +324,6 @@ DiasMesesAnos q2(char datainicial[], char datafinal[])
 
       //calcule a distancia entre as datas
 
-
       //se tudo der certo
       dma.retorno = 1;
       return dma;
@@ -343,9 +342,27 @@ DiasMesesAnos q2(char datainicial[], char datafinal[])
  @saida
     Um número n >= 0.
  */
+
+int searchChar (char texto[], char c, int isCaseSensitive) {
+    int quantity = 0;
+
+    if (isCaseSensitive == 1) {
+      for (int i = 0; texto[i] != '\0'; i++) {
+        if (texto[i] == c) quantity++;
+      }
+    } else if (isCaseSensitive == 0) {
+      for (int i = 0; texto[i] != '\0'; i++) {
+        if (texto[i] == c || texto[i] == c - 32) quantity++;
+      }
+    }
+    return quantity;
+}
+    
 int q3(char *texto, char c, int isCaseSensitive)
 {
     int qtdOcorrencias = -1;
+
+    qtdOcorrencias = searchChar (texto, c, isCaseSensitive);
 
     return qtdOcorrencias;
 }

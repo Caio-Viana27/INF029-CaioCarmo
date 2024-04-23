@@ -392,14 +392,12 @@ int searchString (char *strTexto, char *strBusca, int posicoes[30]) {
   int final = 1;
   int acento = 0;
   int contador = 0;
+    int temacento=0;
 
   for (int i = 0; strTexto[i] != '\0'; i++) {
 
-    char caractere = strTexto[i];
-
-    /* if (caractere == 'á' || caractere == 'é' || caractere == 'í' || caractere == 'ó' || caractere == 'ú' ||
-        caractere == 'Á' || caractere == 'É' || caractere == 'Í' || caractere == 'Ó' || caractere == 'Ú')
-      acento++; */
+    if (strTexto[i] == -61)
+     acento++; // -61 é o codigo de acento
 
     if (strTexto[i] == strBusca[0]) {
       int posicaoI = i;
@@ -428,11 +426,6 @@ int q4(char *strTexto, char *strBusca, int posicoes[30])
 {
     int qtdOcorrencias = searchString (strTexto, strBusca, posicoes);
 
-    for (int i = 0; posicoes[i] != -1; i++) {
-      printf("%d ", posicoes[i]);
-    }
-    printf("\n");
-
     return qtdOcorrencias;
 }
 
@@ -448,8 +441,17 @@ int q4(char *strTexto, char *strBusca, int posicoes[30])
 
 int q5(int num)
 {
-
-    return num;
+    int resto = 0;
+    int numInverso = 0;
+    
+    while (num != 0) {
+      resto = num % 10;
+      num = num / 10;
+      numInverso += resto;
+      if (num > 0)
+        numInverso *= 10;
+    }
+    return numInverso;
 }
 
 /*

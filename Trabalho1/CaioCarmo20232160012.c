@@ -463,9 +463,71 @@ int q5(int num)
  @saida
     Quantidade de vezes que número de busca ocorre em número base
  */
+void decompor (int num, int vetor[]) {
+    for (int i = 0; num != 0; i++) {
+      vetor [i] = num % 10;
+      num = num / 10;
+    }
+    int size = 0;
+    for (int i = 0; vetor[i] != -1; i++) size++;
+
+    for (int i = 0, j = size - 1; i < j; i++, j--) {
+      int temp = vetor[i];
+      vetor[i] = vetor[j];
+      vetor[j] = temp;
+    }
+}
+
+void init_Vetor (int vetor[]) {
+    for (int i = 0; i < 15; i++)
+      vetor[i] = -1;
+}
+
+int search_Num (int vetorBase[], int vetorBusca[]) {
+  int contador = 0;
+
+  int i = 0;
+  while (vetorBase[i] != -1) {
+
+    if (vetorBase[i] == vetorBusca[0]) {
+      int found = 1;
+      int j = 1;
+      while (vetorBusca[j] != -1) {
+
+        if (vetorBase[i+j] != vetorBusca[j]) {
+          found = 0;
+          break;
+        }
+        j++;
+      }
+      if (found) {
+        contador++;
+        i += 2;
+      } else i++;
+    } else i++;
+  }
+  return contador;
+}
 
 int q6(int numerobase, int numerobusca)
 {
-    int qtdOcorrencias;
+    int vetorBase[15];
+    int vetorBusca[15];
+
+    init_Vetor (vetorBase);
+    init_Vetor (vetorBusca);
+
+    decompor (numerobase, vetorBase);
+    decompor (numerobusca, vetorBusca);
+
+    int qtdOcorrencias = search_Num (vetorBase, vetorBusca);
+
     return qtdOcorrencias;
 }
+
+ /* for (int i = 0; vetorBase[i] != -1; i++)
+      printf("%d", vetorBase[i]);
+    printf("\n");
+    for (int i = 0; vetorBusca[i] != -1; i++)
+      printf("%d", vetorBusca[i]);
+    printf("\n"); */

@@ -33,10 +33,10 @@ int main() {
   // testSomar();
   // testFatorial();
   // testQ1();
-  // testQ2();
+   testQ2();
   // testQ3();
   // testQ4();
-  testQ5();
+  // testQ5();
   // testQ6();
 }
 
@@ -57,6 +57,7 @@ void testFatorial() {
 }
 
 void testQ1() {
+  printf("Questao 1:\n");
   char str[11];
   strcpy(str, "29/02/2015");
   printf("%d\n", q1(str) == 0);
@@ -75,6 +76,7 @@ void testQ1() {
 }
 
 void testQ2() {
+  printf("Questao 2:\n");
   char datainicial[11], datafinal[11];
   int qtdDias, qtdMeses, qtdAnos;
   DiasMesesAnos dma;
@@ -127,6 +129,7 @@ void testQ2() {
 }
 
 void testQ3() {
+  printf("Questao 3:\n");
   char str[250];
   strcpy(str, "Renato Lima Novais");
   printf("%d\n", q3(str, 'a', 0) == 3);
@@ -137,6 +140,7 @@ void testQ3() {
 }
 
 void testQ4() {
+  printf("Questao 4:\n");
   char strTexto[250];
   char strBusca[50];
   int posicoes[30];
@@ -155,8 +159,7 @@ void testQ4() {
   for (i = 0; i < 30; i++) {
     posicoes[i] = -1;
   }
-  strcpy(strTexto,
-         "Olá, o mundo é muito grande. Tem muitas pessoas, e muitos problemas");
+  strcpy(strTexto, "Olá, o mundo é muito grande. Tem muitas pessoas, e muitos problemas");
   strcpy(strBusca, "mui");
   printf("%d\n", q4(strTexto, strBusca, posicoes) == 3);
   printf("%d\n", posicoes[0] == 16);
@@ -168,6 +171,7 @@ void testQ4() {
 }
 
 void testQ5() {
+  printf("Questao 5:\n");
   printf("%d\n", q5(345) == 543);
   printf("%d\n", q5(78) == 87);
   printf("%d\n", q5(3) == 3);
@@ -175,6 +179,7 @@ void testQ5() {
 }
 
 void testQ6() {
+  printf("Questao 6:\n");
   printf("%d\n", q6(34567368, 3) == 2);
   printf("%d\n", q6(34567368, 4576) == 0);
   printf("%d\n", q6(3539343, 3) == 4);

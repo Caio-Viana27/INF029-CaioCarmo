@@ -307,19 +307,156 @@ int q1(char data[])
     4 -> datainicial > datafinal
     Caso o cálculo esteja correto, os atributos qtdDias, qtdMeses e qtdAnos devem ser preenchidos com os valores correspondentes.
  */
+
+int anoBissexto (dateCompare dc) {
+
+    int ano = dc.AnoInicial;
+
+    if ( (ano % 4 == 0 && ano % 100 != 0) 
+               || (ano % 4 == 0 && ano % 100 == 0 && ano % 400 == 0) ) {
+        return 1;
+    }
+    return 0;
+}
+
+int searchMonth_dc (dateCompare dc, int array[]) {
+
+  for (int i = 0; array[i] != -1; i++) {
+    if (dc.MesesInicial == array[i]) {
+      return 1;
+    }
+  }
+  return 0;
+}
+
 DiasMesesAnos q2(char datainicial[], char datafinal[])
 {
 
     //calcule os dados e armazene nas três variáveis a seguir
     DiasMesesAnos dma;
+    dateCompare dc;
+
+    int Mes30[] = { 4, 6, 9, 11, -1};
+    int Mes31[] = { 1, 3, 5, 7, 8, 10, 12, -1};
 
     if (q1(datainicial) == 0){
       dma.retorno = 2;
       return dma;
-    }else if (q1(datafinal) == 0){
+    } else if (q1(datafinal) == 0){
       dma.retorno = 3;
       return dma;
-    }else{
+    } else {
+
+      char dia[3];
+      char mes[3];
+      char ano[5];
+
+      brakeDate (datainicial, dia, mes, ano);
+
+      dc.DiaInicial = atoi(dia);
+      dc.MesesInicial = atoi(mes);
+      dc.AnoInicial = atoi(ano);
+
+      brakeDate (datafinal, dia, mes, ano);
+    
+      dc.DiaFinal = atoi(dia);
+      dc.MesesFinal = atoi(mes);
+      dc.AnoFinal = atoi(ano);
+
+      if (dc.AnoFinal < dc.AnoInicial) {
+        dma.retorno = 4;
+        return dma;
+      } else if (dc.AnoFinal == dc.AnoInicial) {
+          if (dc.MesesFinal < dc.MesesInicial) {
+            dma.retorno = 4;
+            return dma;
+          } else if (dc.MesesFinal == dc.MesesInicial) {
+              if (dc.DiaFinal < dc.DiaInicial) {
+                dma.retorno = 4;
+                return dma;
+              }
+          }
+      }
+
+      int totalDias = 0;
+
+      while (100) {
+
+        int Bissexto;
+        if (dc.MesesInicial == 1 && dc.AnoInicial < dc.AnoFinal) {
+            Bissexto = anoBissexto (dc);
+
+            if (Bissexto) {
+              totalDias += 366;
+              dc.DiaInicial = 0;
+              dc.AnoInicial++;
+            } else {
+              totalDias += 365;
+              dc.DiaInicial = 0;
+              dc.AnoInicial++;
+            }
+        } else if (dc.AnoInicial < dc.AnoFinal) {
+          int controle = 1;
+
+          while (controle) {
+
+            if (dc.MesesInicial == 2) {
+              Bissexto = anoBissexto (dc);
+              if (Bissexto) totalDias += 28;
+              else totalDias += 29;
+            } else if (searchMonth_dc(dc, Mes30)) {
+                totalDias += 30;
+            } else if (searchMonth_dc(dc, Mes31)) {
+                totalDias += 31;
+            }
+            dc.MesesInicial++;
+            if (dc.MesesInicial == 12) {
+              totalDias += 31;
+              dc.DiaInicial = 1;
+              dc.MesesInicial = 1;
+              dc.AnoInicial++;
+              break;
+            }
+          }
+        } else if (dc.MesesInicial == dc.MesesFinal && dc.AnoInicial == dc.AnoFinal) {
+            totalDias += dc.DiaFinal - dc.DiaInicial;
+            break;
+        } else if (dc.AnoInicial == dc.AnoFinal) {
+          int controle = 1;
+
+          while (controle) {
+
+            if (dc.MesesInicial == 2) {
+              Bissexto = anoBissexto (dc);
+              if (Bissexto) totalDias += 28;
+              else totalDias += 29;
+            } else if (searchMonth_dc(dc, Mes30)) {
+                totalDias += 30 - dc.DiaInicial;
+            } else if (searchMonth_dc(dc, Mes31)) {
+                totalDias += 31 - dc.DiaInicial;
+            }
+            dc.DiaInicial = 0;
+            dc.MesesInicial++;
+            if (dc.MesesInicial == dc.MesesFinal) {
+              totalDias += dc.DiaFinal;
+              break;
+            }
+          }
+          break;
+        }
+      }
+
+      printf("total de dias %d ", totalDias);
+
+      dma.qtdAnos = totalDias / 365;
+      totalDias %= 365;
+      dma.qtdMeses = totalDias / 30;
+      dma.qtdDias = totalDias % 30;
+
+      printf("qtdDias %d ", dma.qtdDias);
+      printf("qtdMeses %d ", dma.qtdMeses);
+      printf("qtdAnos %d\n", dma.qtdAnos);
+
       //verifique se a data final não é menor que a data inicial
 
       //calcule a distancia entre as datas
@@ -327,9 +464,7 @@ DiasMesesAnos q2(char datainicial[], char datafinal[])
       //se tudo der certo
       dma.retorno = 1;
       return dma;
-
     }
-
 }
 
 /*
@@ -524,6 +659,33 @@ int q6(int numerobase, int numerobusca)
 
     return qtdOcorrencias;
 }
+
+/*     int qtdOcorrencias = 0;
+
+    while (numerobase != 0) {
+    int resto = numerobase % 10;
+    int restoBusca = numerobusca % 10;
+    int found;
+
+      if (resto == restoBusca) {
+        found = 1;
+        while (restoBusca != 0) {
+          resto = numerobase % 10;
+          resto = numerobusca % 10;
+          if (resto != restoBusca) {
+            found = 0;
+            break;
+          }
+          if (found) qtdOcorrencias++;
+          numerobase /= 10;
+          restoBusca /= 10;
+        }
+      }
+      numerobase /= 10;
+    }
+
+    printf("qtdOcorrencias %d\n", qtdOcorrencias); */
+
 
  /* for (int i = 0; vetorBase[i] != -1; i++)
       printf("%d", vetorBase[i]);

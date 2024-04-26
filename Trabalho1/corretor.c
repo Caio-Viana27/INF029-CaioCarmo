@@ -86,6 +86,8 @@ void testQ2() {
   qtdMeses = -1;
   qtdAnos = -1;
 
+  printf("teste 1\n");
+
   strcpy(datainicial, "01/06/2015");
   strcpy(datafinal, "01/06/2016");
   dma = q2(datainicial, datafinal);
@@ -94,10 +96,57 @@ void testQ2() {
   printf("%d\n", dma.qtdMeses == 0);
   printf("%d\n", dma.qtdAnos == 1);
 
-  // teste 2 - retornos
+  // teste 2
   qtdDias = -1;
   qtdMeses = -1;
   qtdAnos = -1;
+
+  printf("teste 2\n");
+
+  strcpy(datainicial, "01/06/2016");
+  strcpy(datafinal, "12/06/2016");
+  dma = q2(datainicial, datafinal);
+  printf("%d\n", dma.retorno == 1);
+  printf("%d\n", dma.qtdDias == 11);
+  printf("%d\n", dma.qtdMeses == 0);
+  printf("%d\n", dma.qtdAnos == 0);
+
+  // teste 3
+  qtdDias = -1;
+  qtdMeses = -1;
+  qtdAnos = -1;
+
+  printf("teste 3\n");
+
+  strcpy(datainicial, "01/06/2015");
+  strcpy(datafinal, "28/09/2022");
+  dma = q2(datainicial, datafinal);
+  printf("%d\n", dma.retorno == 1);
+  printf("%d\n", dma.qtdDias == 3);
+  printf("%d\n", dma.qtdMeses == 4);
+  printf("%d\n", dma.qtdAnos == 7);
+
+  // teste 4
+  qtdDias = -1;
+  qtdMeses = -1;
+  qtdAnos = -1;
+
+  printf("teste 4\n");
+
+  strcpy(datainicial, "01/02/2016");
+  strcpy(datafinal, "01/03/2016");
+  dma = q2(datainicial, datafinal);
+  printf("%d\n", dma.retorno == 1);
+  printf("%d\n", dma.qtdDias == 29);
+  printf("%d\n", dma.qtdMeses == 0);
+  printf("%d\n", dma.qtdAnos == 0);
+
+  // teste 5 - retornos
+  qtdDias = -1;
+  qtdMeses = -1;
+  qtdAnos = -1;
+
+  printf("teste 5\n");
 
   strcpy(datainicial, "01/30/2015");
   strcpy(datafinal, "01/06/2016");
@@ -114,10 +163,22 @@ void testQ2() {
   dma = q2(datainicial, datafinal);
   printf("%d\n", dma.retorno == 4);
 
-  // teste 3
+  strcpy(datainicial, "10/06/2016");
+  strcpy(datafinal, "10/05/2016");
+  dma = q2(datainicial, datafinal);
+  printf("%d\n", dma.retorno == 4);
+
+  strcpy(datainicial, "10/05/2016");
+  strcpy(datafinal, "09/05/2016");
+  dma = q2(datainicial, datafinal);
+  printf("%d\n", dma.retorno == 4);
+
+  // teste 6
   qtdDias = -1;
   qtdMeses = -1;
   qtdAnos = -1;
+
+  printf("teste 6\n");
 
   strcpy(datainicial, "06/06/2017");
   strcpy(datafinal, "07/07/2017");

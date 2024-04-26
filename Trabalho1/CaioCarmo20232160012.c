@@ -446,16 +446,16 @@ DiasMesesAnos q2(char datainicial[], char datafinal[])
         }
       }
 
-      printf("total de dias %d ", totalDias);
+      //printf("total de dias %d ", totalDias);
 
       dma.qtdAnos = totalDias / 365;
       totalDias %= 365;
       dma.qtdMeses = totalDias / 30;
       dma.qtdDias = totalDias % 30;
 
-      printf("qtdDias %d ", dma.qtdDias);
-      printf("qtdMeses %d ", dma.qtdMeses);
-      printf("qtdAnos %d\n", dma.qtdAnos);
+      //printf("qtdDias %d ", dma.qtdDias);
+      //printf("qtdMeses %d ", dma.qtdMeses);
+      //printf("qtdAnos %d\n", dma.qtdAnos);
 
       //verifique se a data final não é menor que a data inicial
 

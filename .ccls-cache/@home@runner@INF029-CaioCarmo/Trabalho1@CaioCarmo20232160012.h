@@ -41,6 +41,17 @@ typedef struct Qtd
 
 } DiasMesesAnos;
 
+typedef struct
+{
+    int DiaInicial;
+    int MesesInicial;
+    int AnoInicial;
+    int DiaFinal;
+    int MesesFinal;
+    int AnoFinal;
+
+} dateCompare;
+
 int somar(int x, int y); //função utilizada para testes
 int fatorial(int x); //função utilizada para testes
 int q1(char data[]);

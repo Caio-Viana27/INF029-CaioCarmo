@@ -388,11 +388,11 @@ DiasMesesAnos q2(char datainicial[], char datafinal[])
 
             if (Bissexto) {
               totalDias += 366;
-              dc.DiaInicial = 0;
+              dc.DiaInicial = 1;
               dc.AnoInicial++;
             } else {
               totalDias += 365;
-              dc.DiaInicial = 0;
+              dc.DiaInicial = 1;
               dc.AnoInicial++;
             }
         } else if (dc.AnoInicial < dc.AnoFinal) {
@@ -411,7 +411,7 @@ DiasMesesAnos q2(char datainicial[], char datafinal[])
             }
             dc.MesesInicial++;
             if (dc.MesesInicial == 12) {
-              totalDias += 31;
+              totalDias += 31 - dc.DiaInicial;
               dc.DiaInicial = 1;
               dc.MesesInicial = 1;
               dc.AnoInicial++;
@@ -487,7 +487,7 @@ int searchChar (char texto[], char c, int isCaseSensitive) {
       }
     } else if (isCaseSensitive == 0) {
       for (int i = 0; texto[i] != '\0'; i++) {
-        if (texto[i] == c || texto[i] == c - 32) quantity++;
+        if (texto[i] == c || texto[i] == c - 32 || texto[i] == c + 32) quantity++;
       }
     }
     return quantity;
@@ -518,10 +518,6 @@ int q3(char *texto, char c, int isCaseSensitive)
 
  */
 
-/* int buscar_Acentacao (char caracter) {
-  char acentos[] = {"~"}
-} */
-
 int searchString (char *strTexto, char *strBusca, int posicoes[30]) {
   int inicial = 0;
   int final = 1;
@@ -549,6 +545,7 @@ int searchString (char *strTexto, char *strBusca, int posicoes[30]) {
         posicoes[inicial] = (posicaoI + 1) - acento;
         posicoes[final] = (i + j) - acento;
         contador++;
+        i = i + j - 1;
         inicial += 2;
         final += 2;
       }
@@ -561,6 +558,11 @@ int q4(char *strTexto, char *strBusca, int posicoes[30])
 {
     int qtdOcorrencias = searchString (strTexto, strBusca, posicoes);
 
+    for (int i = 0; posicoes[i] != -1; i++) {
+      printf("indice %d, posicao %d\n", i, posicoes[i]);
+    }
+
+    printf("%d\n", qtdOcorrencias);
     return qtdOcorrencias;
 }
 
@@ -627,6 +629,7 @@ int search_Num (int vetorBase[], int vetorBusca[]) {
     if (vetorBase[i] == vetorBusca[0]) {
       int found = 1;
       int j = 1;
+      if (vetorBusca[1] == -1) { contador++; found = 0; }
       while (vetorBusca[j] != -1) {
 
         if (vetorBase[i+j] != vetorBusca[j]) {

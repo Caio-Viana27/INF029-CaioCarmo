@@ -13,7 +13,8 @@ void set_game (char hash[3][5]);
 void print_game (char hash[3][5]);
 void set_game_Positions (char hash_Position[3][5]);
 int play (char position, char hash[3][5], char player);
-void tic_tac_toe (char position, char hash_Position[3][5], char hash[3][5], int i);
+void tic_tac_toe (char position, char hash_Position[3][5], char hash[3][5]);
+bool check_winner (char hash[3][5], char player);
 
 int main () {
 
@@ -24,18 +25,17 @@ int main () {
     set_game (hash);
     set_game_Positions (hash_Position);
 
-    int i = 0;
     char position;
-    tic_tac_toe (position, hash_Position, hash, i);
+    tic_tac_toe (position, hash_Position, hash);
 
     return 0;
 }
 
-void tic_tac_toe (char position, char hash_Position[3][5], char hash[3][5], int i) {
-    bool control = true;
+void tic_tac_toe (char position, char hash_Position[3][5], char hash[3][5]) {
+    bool noWinner = true;
     char player;
-
-    while (control && i < 9) {
+    int i = 0;
+    while (noWinner && i < 9) {
 
         if (i % 2 == 0) {
             printf("Player X:\n");
@@ -65,9 +65,20 @@ void tic_tac_toe (char position, char hash_Position[3][5], char hash[3][5], int 
             printf("Escolha uma posicao valida!\n");
         }
         else i++;
+
+        bool winner = check_winner (hash, player);
+
+        if (winner) {
+            noWinner = false;
+            printf ("Player: %c won!\n", player);
+            print_game (hash);
+        }
+        else if (i == 9) {
+            printf ("it's a draw!\n");
+            print_game (hash);
+        }
     }
     //return i;
-    print_game (hash);
 }
 
 void set_game (char hash[3][5]) {
@@ -140,44 +151,59 @@ int play (char position, char hash[3][5], char player) {
     }
 }
 
-int check_winner (char hash[3][5], char player) {
+bool check_winner (char hash[3][5], char player) {
 
-    
+    // search line
+    bool winner = true;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 5; j++) {
+            if (j % 2 == 0) {
+                if (hash[i][j] != player) {
+                    winner = false;
+                    break;
+                }
+                else winner = true;
+            }
+        }
+        if (winner) return true;
+    }
+
+    // search column
+    for (int j = 0; j < 5; j++) {
+        if (j % 2 == 0) {
+            for (int i = 0; i < 3; i++) {
+                if (hash[i][j] != player) {
+                    winner = false;
+                    break;
+                }
+                else winner = true;
+            }
+        }
+        if (winner) return true;
+    }
+
+    // main diagonal
+    for (int i = 0, j = 0; i < 3; i++, j += 2) {
+        if (hash[i][j] != player) {
+            winner = false;
+            break;
+        }
+        else winner = true;
+    }
+    if (winner) return true;
+
+    // secondary diagonal
+    for (int i = 0, j = 4; i < 3; i++, j -= 2) {
+        if (hash[i][j] != player) {
+            winner = false;
+            break;
+        }
+        else winner = true;
+    }
+    if (winner) return true;
+
+    return false;
 }
-
- /* for (; control && i < 9; i++) {
-        char player;
-
-        if (i % 2 == 0) {
-            printf("Player X:\n");
-            player = 'X';
-        }
-        else {
-            printf("Player O:\n");
-            player = 'O';
-        }
-
-        print_game (hash);
-        printf("\n");
-        printf("posicoes:\n");
-        print_game (hash_Position);
-        printf("\n");
-
-        //char position;
-        printf("Escolha uma posicao: ");
-        scanf("%c", &position);
-        system("clear");
-
-        if (position_occupied == play (position, hash, player)) {
-            i--;
-            printf("Esta posicao ja esta ocupada!\n");
-        }
-        else if (position_invalid == play (position, hash, player)) {
-            i--;
-            printf("Escolha uma posicao valida!\n");
-        }
-        return i;
-    } */
 
     // teste
     /* char position = 'A';

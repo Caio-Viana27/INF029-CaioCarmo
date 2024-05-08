@@ -558,11 +558,6 @@ int q4(char *strTexto, char *strBusca, int posicoes[30])
 {
     int qtdOcorrencias = searchString (strTexto, strBusca, posicoes);
 
-    for (int i = 0; posicoes[i] != -1; i++) {
-      printf("indice %d, posicao %d\n", i, posicoes[i]);
-    }
-
-    printf("%d\n", qtdOcorrencias);
     return qtdOcorrencias;
 }
 

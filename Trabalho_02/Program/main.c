@@ -12,11 +12,12 @@ int menu()
     int op;
     printf("Digite as opção desejada\n");
     printf("0 - Sair\n");
-    printf("1 - Inserir\n");
-    printf("2 - Excluir\n");
-    printf("3 - Listar uma estrutura\n");
-    printf("4 - Dobrar Numero\n");
-    printf("5 - \n");
+    printf("1 - Criar estrutura\n");
+    printf("2 - Inserir\n");
+    printf("3 - Excluir\n");
+    printf("4 - Listar uma estrutura\n");
+    printf("5 - Dobrar Numero\n");
+    printf("6 - \n");
     scanf("%d", &op);
     return op;
 }
@@ -39,6 +40,41 @@ int main()
             break;
         }
         case 1:
+        { //criar esturtura auxiliar
+            //TODO
+            int posicao;
+            int tamanho;
+            printf("Defina a posição para criar a estrutura");
+            scanf("%d", &posicao);
+            getchar();
+            printf("Defina o tamanho da estrutura");
+            scanf("%d", &tamanho);
+            getchar();
+
+            ret = criarEstruturaAuxiliar(posicao, tamanho);
+            if (ret == SUCESSO)
+            {
+                printf("Estrutura criada com sucesso");
+            }
+            else if (ret == POSICAO_INVALIDA)
+            {
+                printf("A posição nao é um valor válido");
+            }
+            else if (ret == SEM_ESPACO_DE_MEMORIA)
+            {
+                printf("Sem espaço de memória");
+            }
+            else if (ret == TAMANHO_INVALIDO)
+            {
+                printf("tamanho não é um valor válido");
+            }
+            else if (ret == JA_TEM_ESTRUTURA_AUXILIAR)
+            {
+                printf("Já existe um estrutura auxiliar nesta posição");
+            }
+            break;
+        }
+        case 2:
         { //inserir
             //TODO
             ret = inserirNumeroEmEstrutura(5, 25);
@@ -56,14 +92,12 @@ int main()
             }
             break;
         }
-
-        case 2:
+        case 3:
         { //excluir
             //TODO
             break;
         }
-
-        case 3:
+        case 4:
         { //recuperar dados estrutura auxiliar
             int posicao, retorno;
             printf("Qual a estrutura a ser listada (1..10)?");
@@ -93,8 +127,7 @@ int main()
             }
             break;
         }
-
-        case 10:
+        case 5:
         { //dobrar
             //ler um numero
             int valor;
@@ -108,7 +141,6 @@ int main()
 
             break;
         }
-
         default:
         {
             printf("opcao inválida\n");

@@ -19,17 +19,17 @@ int main()
 {
     inicializar();
     testeInserirSemNada();
-    /*testeCriarEstrutura();
+    testeCriarEstrutura();
     testeInserirComEstrutura();
     testeExcluir();
-    testeExcluirNumeroEspecifico();
-    testeListar();
-    testeRetornarTodosNumeros();
-    testeMudarTamanhoEstrutura();
-    testeListaEncadeada();*/
+    //testeExcluirNumeroEspecifico();
+    //testeListar();
+    //testeRetornarTodosNumeros();
+    //testeMudarTamanhoEstrutura();
+    //testeListaEncadeada();
     finalizar();
 }
-int ligado = 0;
+int ligado = 1;
 void show_log(char *str)
 {
     if (ligado)
@@ -38,7 +38,7 @@ void show_log(char *str)
 
 void testeInserirSemNada()
 {
-    show_log("testeInserirSemNada()");
+    show_log("testeInserirSemNada()"); // pos | valor
     printf("%d\n", inserirNumeroEmEstrutura(2, 2) == SEM_ESTRUTURA_AUXILIAR);
     printf("%d\n", inserirNumeroEmEstrutura(-2, 2) == POSICAO_INVALIDA);
     printf("%d\n", inserirNumeroEmEstrutura(0, 2) == POSICAO_INVALIDA);
@@ -47,7 +47,7 @@ void testeInserirSemNada()
 
 void testeCriarEstrutura()
 {
-    show_log("testeCriarEstrutura()");
+    show_log("testeCriarEstrutura()"); // pos | tamanho
     printf("%d\n", criarEstruturaAuxiliar(-2, 5) == POSICAO_INVALIDA);
     printf("%d\n", criarEstruturaAuxiliar(0, 5) == POSICAO_INVALIDA);
     printf("%d\n", criarEstruturaAuxiliar(11, 5) == POSICAO_INVALIDA);

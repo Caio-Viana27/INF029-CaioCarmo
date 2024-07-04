@@ -14,6 +14,17 @@ typedef struct reg {
     struct reg *prox;
 } No;
 
+typedef struct linkedList {
+    struct No *head;
+    struct No *tail;
+} list;
+
+typedef struct mainArray {
+    int tamanho;
+    int qtdDeElementos;
+    int* estruturaAuxiliar;
+} vetor_Principal;
+
 int criarEstruturaAuxiliar(int posicao, int tamanho);
 int inserirNumeroEmEstrutura(int posicao, int valor);
 int excluirNumeroDoFinaldaEstrutura(int posicao);

@@ -24,7 +24,7 @@ int main()
     testeExcluir();
     testeExcluirNumeroEspecifico();
     testeListar();
-    //testeRetornarTodosNumeros();
+    testeRetornarTodosNumeros();
     //testeMudarTamanhoEstrutura();
     //testeListaEncadeada();
     finalizar();
@@ -144,68 +144,68 @@ void testeRetornarTodosNumeros()
 {
     show_log("testeRetornarTodosNumeros()");
     int vet1[2];
-    printf("%d\n", getDadosDeTodasEstruturasAuxiliares(vet1) == TODAS_ESTRUTURAS_AUXILIARES_VAZIAS);
+    printf("%d - 1\n", getDadosDeTodasEstruturasAuxiliares(vet1) == TODAS_ESTRUTURAS_AUXILIARES_VAZIAS);
 
-    printf("%d\n", getDadosOrdenadosDeTodasEstruturasAuxiliares(vet1) == TODAS_ESTRUTURAS_AUXILIARES_VAZIAS);
+    printf("%d - 2\n", getDadosOrdenadosDeTodasEstruturasAuxiliares(vet1) == TODAS_ESTRUTURAS_AUXILIARES_VAZIAS);
 
-    printf("%d\n", inserirNumeroEmEstrutura(2, 3) == SUCESSO);
-    printf("%d\n", inserirNumeroEmEstrutura(2, 8) == SUCESSO);
-    printf("%d\n", inserirNumeroEmEstrutura(2, 0) == SUCESSO);
+    printf("%d - 3\n", inserirNumeroEmEstrutura(2, 3) == SUCESSO);
+    printf("%d - 4\n", inserirNumeroEmEstrutura(2, 8) == SUCESSO);
+    printf("%d - 5\n", inserirNumeroEmEstrutura(2, 0) == SUCESSO);
     /*
 2 [3,8,0]
 */
 
-    printf("%d\n", criarEstruturaAuxiliar(5, 10) == SUCESSO);
+    printf("%d - 6\n", criarEstruturaAuxiliar(5, 10) == SUCESSO);
 
-    printf("%d\n", inserirNumeroEmEstrutura(5, 1) == SUCESSO);
-    printf("%d\n", inserirNumeroEmEstrutura(5, 34) == SUCESSO);
-    printf("%d\n", inserirNumeroEmEstrutura(5, 12) == SUCESSO);
-    printf("%d\n", inserirNumeroEmEstrutura(5, 6) == SUCESSO);
-    printf("%d\n", inserirNumeroEmEstrutura(5, 27) == SUCESSO);
-    printf("%d\n", inserirNumeroEmEstrutura(5, -6) == SUCESSO);
+    printf("%d - 7\n", inserirNumeroEmEstrutura(5, 1) == SUCESSO);
+    printf("%d - 8\n", inserirNumeroEmEstrutura(5, 34) == SUCESSO);
+    printf("%d - 9\n", inserirNumeroEmEstrutura(5, 12) == SUCESSO);
+    printf("%d - 10\n", inserirNumeroEmEstrutura(5, 6) == SUCESSO);
+    printf("%d - 11\n", inserirNumeroEmEstrutura(5, 27) == SUCESSO);
+    printf("%d - 12\n", inserirNumeroEmEstrutura(5, -6) == SUCESSO);
     /*
 2 [3,8,0]
 5 [1,34,12,6,27,-6, , , , ]
 */
     int vet[9];
 
-    printf("%d\n", getDadosDeTodasEstruturasAuxiliares(vet) == SUCESSO);
+    printf("%d - 13\n", getDadosDeTodasEstruturasAuxiliares(vet) == SUCESSO);
 
-    printf("%d\n", vet[0] == 3);
-    printf("%d\n", vet[1] == 8);
-    printf("%d\n", vet[2] == 0);
-    printf("%d\n", vet[3] == 1);
-    printf("%d\n", vet[4] == 34);
-    printf("%d\n", vet[5] == 12);
-    printf("%d\n", vet[6] == 6);
-    printf("%d\n", vet[7] == 27);
-    printf("%d\n", vet[8] == -6);
+    printf("%d - 13\n", vet[0] == 3);
+    printf("%d - 14\n", vet[1] == 8);
+    printf("%d - 15\n", vet[2] == 0);
+    printf("%d - 16\n", vet[3] == 1);
+    printf("%d - 17\n", vet[4] == 34);
+    printf("%d - 18\n", vet[5] == 12);
+    printf("%d - 19\n", vet[6] == 6);
+    printf("%d - 20\n", vet[7] == 27);
+    printf("%d - 21\n", vet[8] == -6);
 
     int vet2[9];
 
-    printf("%d\n", getDadosOrdenadosDeTodasEstruturasAuxiliares(vet2) == SUCESSO);
+    printf("%d - 22\n", getDadosOrdenadosDeTodasEstruturasAuxiliares(vet2) == SUCESSO);
 
-    printf("%d\n", vet2[0] == -6);
-    printf("%d\n", vet2[1] == 0);
-    printf("%d\n", vet2[2] == 1);
-    printf("%d\n", vet2[3] == 3);
-    printf("%d\n", vet2[4] == 6);
-    printf("%d\n", vet2[5] == 8);
-    printf("%d\n", vet2[6] == 12);
-    printf("%d\n", vet2[7] == 27);
-    printf("%d\n", vet2[8] == 34);
+    printf("%d - 23\n", vet2[0] == -6);
+    printf("%d - 24\n", vet2[1] == 0);
+    printf("%d - 25\n", vet2[2] == 1);
+    printf("%d - 26\n", vet2[3] == 3);
+    printf("%d - 27\n", vet2[4] == 6);
+    printf("%d - 28\n", vet2[5] == 8);
+    printf("%d - 29\n", vet2[6] == 12);
+    printf("%d - 30\n", vet2[7] == 27);
+    printf("%d - 31\n", vet2[8] == 34);
 
-    printf("%d\n", getDadosDeTodasEstruturasAuxiliares(vet) == SUCESSO);
+    printf("%d - 32\n", getDadosDeTodasEstruturasAuxiliares(vet) == SUCESSO);
 
-    printf("%d\n", vet[0] == 3);
-    printf("%d\n", vet[1] == 8);
-    printf("%d\n", vet[2] == 0);
-    printf("%d\n", vet[3] == 1);
-    printf("%d\n", vet[4] == 34);
-    printf("%d\n", vet[5] == 12);
-    printf("%d\n", vet[6] == 6);
-    printf("%d\n", vet[7] == 27);
-    printf("%d\n", vet[8] == -6);
+    printf("%d - 33\n", vet[0] == 3);
+    printf("%d - 34\n", vet[1] == 8);
+    printf("%d - 35\n", vet[2] == 0);
+    printf("%d - 36\n", vet[3] == 1);
+    printf("%d - 37\n", vet[4] == 34);
+    printf("%d - 38\n", vet[5] == 12);
+    printf("%d - 39\n", vet[6] == 6);
+    printf("%d - 40\n", vet[7] == 27);
+    printf("%d - 41\n", vet[8] == -6);
 }
 /*
 2 [3,8,0]

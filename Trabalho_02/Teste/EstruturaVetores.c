@@ -187,7 +187,6 @@ int getDadosEstruturaAuxiliar(int posicao, int vetorAux[])
         int i = 0;
         int qtdElementos = vetorPrincipal[posicao]->qtdDeElementos;
         while (i < qtdElementos) {
-            //printf("%d ", vetorPrincipal[posicao]->estruturaAuxiliar[i]);
             vetorAux[i] = vetorPrincipal[posicao]->estruturaAuxiliar[i];
             i++;
         }
@@ -195,14 +194,13 @@ int getDadosEstruturaAuxiliar(int posicao, int vetorAux[])
     }
 }
 
-void insertionSort (int posicao, int vetorAux[]) 
+void insertionSort (int qtdElementos, int vetorAux[]) 
 {
-    int qtdElementos = vetorPrincipal[posicao]->qtdDeElementos;
     for (int i = 1; i < qtdElementos; i++) {
         int key = vetorAux[i];
         int j = i - 1;
 
-        while (j >= 0 && vetorAux[j > key]) {
+        while (j >= 0 && vetorAux[j] > key) {
             vetorAux[j + 1] = vetorAux[j];
             j--;
         }
@@ -229,38 +227,86 @@ int getDadosOrdenadosEstruturaAuxiliar(int posicao, int vetorAux[])
         return SEM_ESTRUTURA_AUXILIAR;
     }
     else {
-        insertionSort (posicao, vetorAux);
+        int qtdElementos = vetorPrincipal[posicao]->qtdDeElementos;
+        insertionSort (qtdElementos, vetorAux);
         return SUCESSO;
     }
+}
+
+void printVetor (int * vetor, int tamanho) {
+    for (int i = 0; i < tamanho; i++)
+        printf("%d ", vetor[i]);
+    printf("\n");
 }
 
 /*
 Objetivo: retorna os números de todas as estruturas auxiliares.
 os números devem ser armazenados em vetorAux
 
-Rertono (int)
+Retorno (int)
     SUCESSO - recuperado com sucesso os valores da estrutura na posição 'posicao'
     TODAS_ESTRUTURAS_AUXILIARES_VAZIAS - todas as estruturas auxiliares estão vazias
 */
 int getDadosDeTodasEstruturasAuxiliares(int vetorAux[])
 {
-    int retorno = 0;
-    return retorno;
+    int naoTemEstrtutura = 1;
+    int i = 0;
+    int j = 0;
+    while (i < TAM) {
+        if (vetorPrincipal[i]->estruturaAuxiliar != NULL &&
+            vetorPrincipal[i]->qtdDeElementos > 0) {
+            naoTemEstrtutura = 0;
+            int k = 0;
+            int size = vetorPrincipal[i]->qtdDeElementos;
+            while (k < size) {
+                vetorAux[j] = vetorPrincipal[i]->estruturaAuxiliar[k];
+                k++;
+                j++;
+            }
+        }
+        i++;
+    }
+    if (naoTemEstrtutura) {return TODAS_ESTRUTURAS_AUXILIARES_VAZIAS;}
+    else {
+        //printf("sem ordenacao ");
+        //printVetor (vetorAux, j);
+        return SUCESSO;}
 }
 
 /*
 Objetivo: retorna os números ordenados de todas as estruturas auxiliares.
 os números devem ser armazenados em vetorAux
 
-Rertono (int)
+Retorno (int)
     SUCESSO - recuperado com sucesso os valores da estrutura na posição 'posicao'
     TODAS_ESTRUTURAS_AUXILIARES_VAZIAS - todas as estruturas auxiliares estão vazias
 */
 int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[])
 {
-
-    int retorno = 0;
-    return retorno;
+    int naoTemEstrtutura = 1;
+    int i = 0;
+    int j = 0;
+    while (i < TAM) {
+        if (vetorPrincipal[i]->estruturaAuxiliar != NULL &&
+            vetorPrincipal[i]->qtdDeElementos > 0) {
+            naoTemEstrtutura = 0;
+            int k = 0;
+            int size = vetorPrincipal[i]->qtdDeElementos;
+            while (k < size) {
+                vetorAux[j] = vetorPrincipal[i]->estruturaAuxiliar[k];
+                k++;
+                j++;
+            }
+        }
+        i++;
+    }
+    if (naoTemEstrtutura) {return TODAS_ESTRUTURAS_AUXILIARES_VAZIAS;}
+    else {
+        insertionSort (j, vetorAux);
+        //printf("com ordenacao ");
+        //printVetor (vetorAux, j);
+        return SUCESSO;
+    }
 }
 
 /*

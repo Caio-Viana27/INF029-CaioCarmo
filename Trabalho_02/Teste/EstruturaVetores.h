@@ -15,8 +15,8 @@ typedef struct reg {
 } No;
 
 typedef struct linkedList {
-    struct No *head;
-    struct No *tail;
+    No *head;
+    No *tail;
 } list;
 
 typedef struct mainArray {

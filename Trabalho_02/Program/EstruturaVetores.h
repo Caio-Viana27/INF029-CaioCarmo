@@ -15,8 +15,8 @@ typedef struct reg {
 } No;
 
 typedef struct linkedList {
-    struct No *head;
-    struct No *tail;
+    No *head;
+    No *tail;
 } list;
 
 typedef struct mainArray {
@@ -29,6 +29,7 @@ int criarEstruturaAuxiliar(int posicao, int tamanho);
 int inserirNumeroEmEstrutura(int posicao, int valor);
 int excluirNumeroDoFinaldaEstrutura(int posicao);
 int excluirNumeroEspecificoDeEstrutura(int posicao, int valor);
+int excluir(int opcao);
 int getDadosEstruturaAuxiliar(int posicao, int vetorAux[]);
 int getDadosOrdenadosEstruturaAuxiliar(int posicao, int vetorAux[]);
 int getDadosDeTodasEstruturasAuxiliares(int vetorAux[]);

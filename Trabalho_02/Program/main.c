@@ -5,20 +5,30 @@
 
 int menu();
 
-void dobrar(int *x);
+//void dobrar(int *x);
 
 int menu()
 {
     int op;
-    printf("Digite as opção desejada\n");
-    printf("0 - Sair\n");
-    printf("1 - Criar estrutura\n");
-    printf("2 - Inserir\n");
-    printf("3 - Excluir\n");
-    printf("4 - Listar uma estrutura\n");
-    printf("5 - Dobrar Numero\n");
-    printf("6 - \n");
+    printf(" _____________________________________________________\n");
+    printf("|                                                     |\n");
+    printf("| Menu                                                |\n");
+    printf("|_____________________________________________________|\n");
+    printf("|                                                     |\n");
+    printf("| Digite a opcao desejada                             |\n");
+    printf("| 0 - Sair                                            |\n");
+    printf("| 1 - Criar estrutura                                 |\n");
+    printf("| 2 - Inserir                                         |\n");
+    printf("| 3 - Excluir                                         |\n");
+    printf("| 4 - Listar uma estrutura                            |\n");
+    printf("| 5 - Dobrar Numero                                   |\n");
+    printf("| 6 - Exibir todas as estruturas                      |\n");
+    printf("|_____________________________________________________|\n");
+    printf("\n");
+    printf("Opcao: ");
     scanf("%d", &op);
+    getchar();
+    system("clear");
     return op;
 }
 
@@ -44,70 +54,147 @@ int main()
             //TODO
             int posicao;
             int tamanho;
-            printf("Defina a posição para criar a estrutura");
+            printf(" _____________________________________________________\n");
+            printf("|                                                     |\n");
+            printf("| Menu: Criar Estrutura                               |\n");
+            printf("|_____________________________________________________|\n");
+            printf("|                                                     |\n");
+            printf("| Defina a posicao para criar a estrutura [1...10]    |\n");
+            printf("|_____________________________________________________|\n");
+            printf("\n");
+            printf("Posicao: ");
             scanf("%d", &posicao);
             getchar();
-            printf("Defina o tamanho da estrutura");
+            printf("\n");
+
+            printf(" _____________________________________________________\n");
+            printf("|                                                     |\n");
+            printf("| Defina o tamanho da estrutura                       |\n");
+            printf("|_____________________________________________________|\n");
+            printf("\n");
+            printf("Tamanho: ");
             scanf("%d", &tamanho);
             getchar();
+            system("clear");
 
             ret = criarEstruturaAuxiliar(posicao, tamanho);
             if (ret == SUCESSO)
             {
-                printf("Estrutura criada com sucesso");
+                printf("Estrutura criada com sucesso\n");
             }
             else if (ret == POSICAO_INVALIDA)
             {
-                printf("A posição nao é um valor válido");
+                printf("A posicao nao eh um valor valido\n");
             }
             else if (ret == SEM_ESPACO_DE_MEMORIA)
             {
-                printf("Sem espaço de memória");
+                printf("Sem espaço de memoria\n");
             }
             else if (ret == TAMANHO_INVALIDO)
             {
-                printf("tamanho não é um valor válido");
+                printf("tamanho nao eh um valor valido\n");
             }
             else if (ret == JA_TEM_ESTRUTURA_AUXILIAR)
             {
-                printf("Já existe um estrutura auxiliar nesta posição");
+                printf("Ja existe um estrutura auxiliar nesta posicao\n");
             }
             break;
         }
         case 2:
         { //inserir
             //TODO
-            ret = inserirNumeroEmEstrutura(5, 25);
+            int posicao;
+            int valor;
+            printf(" _____________________________________________________\n");
+            printf("|                                                     |\n");
+            printf("| Menu: Inserir na Estrutura                          |\n");
+            printf("|_____________________________________________________|\n");
+            printf("|                                                     |\n");
+            printf("| Defina a posicao para inserir na estrutura [1...10] |\n");
+            printf("|_____________________________________________________|\n");
+            printf("\n");
+            printf("Posição: ");
+            scanf("%d", &posicao);
+            getchar();
+            printf("\n");
+
+            printf(" _____________________________________________________\n");
+            printf("|                                                     |\n");
+            printf("| Defina o valor da estrutura                         |\n");
+            printf("|_____________________________________________________|\n");
+            printf("\n");
+            printf("Valor: ");
+            scanf("%d", &valor);
+            getchar();
+            system("clear");
+
+            ret = inserirNumeroEmEstrutura(posicao, valor);
             if (ret == SUCESSO)
             {
-                printf("Inserido com sucesso");
+                printf("Inserido com sucesso\n");
             }
             else if (ret == SEM_ESPACO)
             {
-                printf("Sem Espaço");
+                printf("Sem Espaco\n");
             }
             else if (ret == SEM_ESTRUTURA_AUXILIAR)
             {
-                printf("Sem estrutura Auxiliar");
+                printf("Sem estrutura Auxiliar\n");
             }
             break;
         }
         case 3:
         { //excluir
             //TODO
+            int opcao;
+            printf(" _____________________________________________________\n");
+            printf("|                                                     |\n");
+            printf("| Menu: Excluir                                       |\n");
+            printf("|_____________________________________________________|\n");
+            printf("|                                                     |\n");
+            printf("| Para excluir um valor especifico digite 1           |\n");
+            printf("| Para excluir um valor do final digite 2             |\n");
+            printf("|_____________________________________________________|\n");
+            printf("\n");
+            printf("Opcao: ");
+            scanf("%d", &opcao);
+            getchar();
+            system("clear");
+
+            ret = excluir(opcao);
+            if (ret == SUCESSO)
+            {
+                printf("Inserido com sucesso\n");
+            }
+            else if (ret == ESTRUTURA_AUXILIAR_VAZIA)
+            {
+                printf("Estrutura auxiliar vazia\n");
+            }
+            else if (ret == SEM_ESTRUTURA_AUXILIAR)
+            {
+                printf("Sem estrutura Auxiliar\n");
+            }
+            else if (ret == NUMERO_INEXISTENTE)
+            {
+                printf("Este valor nao existena estrutura\n");
+            }
+            else if (ret == POSICAO_INVALIDA)
+            {
+                printf("Posicao invalida\n");
+            }
             break;
         }
         case 4:
         { //recuperar dados estrutura auxiliar
             int posicao, retorno;
-            printf("Qual a estrutura a ser listada (1..10)?");
+            printf("Qual a estrutura a ser listada (1..10)?\n");
             scanf("%d", &posicao);
 
             int qtd = getQuantidadeElementosEstruturaAuxiliar(posicao);
 
             if (qtd == POSICAO_INVALIDA)
             {
-                printf("Posição inválida");
+                printf("Posicao invalida\n");
             }
             else
             { // existe elemento
@@ -117,7 +204,7 @@ int main()
 
                 if (retorno == SUCESSO)
                 {
-                    //imprimir para os dados para o usuário
+                    //imprimir os dados para o usuário
                     int i = 0;
                     for (; i < qtd; i++)
                     {
@@ -133,7 +220,7 @@ int main()
             int valor;
             scanf("%i", &valor);
 
-            dobrar(&valor);
+            //dobrar(&valor);
 
             //passar para um funcao (void dobrar(...)) que recebe o numero e dobra (EstruturaVetores.c)
 
@@ -141,12 +228,15 @@ int main()
 
             break;
         }
+        case 6:
+        {
+            break;
+        }
         default:
         {
-            printf("opcao inválida\n");
+            printf("opcao invalida\n");
         }
         }
     }
-
     return 0;
 }

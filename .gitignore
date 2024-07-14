@@ -1,9 +1,6 @@
 <<<<<<< HEAD
 # ignora todos os arquivos .exe
 *.exe
-# ignora todos os arquivos .txt
-*.txt
 # ignora os arquivos .ccls-cache
 .ccls-cache
 >>>>>>> 12f422b (inicial commit to inicialize)
-*.txt

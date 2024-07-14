@@ -25,6 +25,7 @@ typedef struct mainArray {
     int* estruturaAuxiliar;
 } vetor_Principal;
 
+void displayEstrutura();
 int criarEstruturaAuxiliar(int posicao, int tamanho);
 int inserirNumeroEmEstrutura(int posicao, int valor);
 int excluirNumeroDoFinaldaEstrutura(int posicao);
@@ -42,6 +43,8 @@ void destruirListaEncadeadaComCabecote(No **inicio);
 
 void inicializar();
 void finalizar();
+int loadData();
+int saveData();
 void dobrar(int *x);
 
 #endif  // TRABALHO2_ESTRUTURAVETORES_H

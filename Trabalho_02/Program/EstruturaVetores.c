@@ -6,6 +6,33 @@
 
 vetor_Principal* vetorPrincipal[TAM];
 
+void displayEstrutura () {
+    int i = 0;
+    while (i < TAM) {
+
+        if (i < TAM - 1) { printf(" %d => ", i + 1); }
+        else { printf("%d => ", i + 1); }
+
+        if (vetorPrincipal[i]->estruturaAuxiliar == NULL) {
+            printf("Sem Estrutura!\n");
+        }
+        else if (vetorPrincipal[i]->qtdDeElementos < 1) {
+            printf("TAM[%d] => ", vetorPrincipal[i]->tamanho);
+            printf("Sem elementos!\n");
+        }
+        else {
+            int j = 0;
+            printf("TAM[%d] => ", vetorPrincipal[i]->tamanho);
+            while (j < vetorPrincipal[i]->qtdDeElementos) {
+                printf("[%d] ", vetorPrincipal[i]->estruturaAuxiliar[j]);
+                j++;
+            }
+            printf("\n");
+        }
+        i++;
+    }
+}
+
 /*
 Objetivo: criar estrutura auxiliar na posição 'posicao'.
 com tamanho 'tamanho'
@@ -560,6 +587,14 @@ void inicializar()
         vetorPrincipal[i]->tamanho = 0;
         vetorPrincipal[i]->qtdDeElementos = 0;
     }
+    int load = loadData();
+    if (load) {
+        printf("Dados carregados com sucesso!\n");
+    }
+    else {
+        printf("Os dados falharam ao carregar!\n");
+    }
+    printf("\n");
 }
 
 /*
@@ -570,6 +605,13 @@ para poder liberar todos os espaços de memória das estruturas auxiliares.
 
 void finalizar()
 {
+    int save = saveData();
+    if (save) {
+        printf("save concluido!");
+    }
+    else {
+        printf("save falhou!");
+    }
     for ( int i = 0; i < 10; i++) {
         if (vetorPrincipal[i]->estruturaAuxiliar != NULL) {
             free(vetorPrincipal[i]->estruturaAuxiliar);
@@ -577,3 +619,103 @@ void finalizar()
         }
     }
 }
+
+int loadData () {    // dataSave\\data.txt
+    FILE* file = fopen("dataSave\\data.txt", "r");
+    if (file == NULL) {
+        return 0;
+    }
+    
+    int i = 0;
+    char* buffer = malloc(sizeof(char) * 100);
+    while (fgets(buffer,  100, file) != NULL/* i < TAM */) {
+
+        int j = 0;
+        while (buffer[j] != ' ') { j++; }
+        j++;
+        if (buffer[j] == 'T') {
+            
+            while (buffer[j] < '1' || buffer[j] > '9') { j++; }
+            int h = 0;
+            char temp[11];
+            while (buffer[j] != ']') {
+                temp[h] = buffer[j];
+                h++;
+                temp[h] = '\0';
+                j++;
+            }
+            int Tam = atoi(temp);
+
+            j += 2;
+            if (buffer[j] != 'S') {
+                criarEstruturaAuxiliar(i + 1, Tam);
+                while (buffer[j] != '\n' && buffer[j] != '\0') {
+                    int k = 0;
+                    char temp[11];
+                    while (buffer[j] != ' ' && buffer[j] != '\n') {
+                        temp[k] = buffer[j];
+                        k++;
+                        temp[k] = '\0';
+                        j++;
+                    }
+                inserirNumeroEmEstrutura(i + 1, atoi(temp));
+                j++;
+                }
+            }
+            else {
+                criarEstruturaAuxiliar(i + 1, Tam);
+            }
+        }
+        i++;
+    }
+    free(buffer);
+    fclose(file);
+    return 1;
+}
+
+int saveData () {    // dataSave\\data.txt
+    FILE* file = fopen("dataSave\\data.txt", "w+");
+    if (file == NULL) {
+        return 0;
+    }
+
+    int i = 0;
+    while (i < TAM) {
+        fprintf(file, "Posicao(%d)=> ", i + 1);
+        if (vetorPrincipal[i]->estruturaAuxiliar == NULL) {
+            fprintf(file, "SE\n");
+        }
+        else if (vetorPrincipal[i]->qtdDeElementos < 1) {
+            fprintf(file, "TAM[%d] ", vetorPrincipal[i]->tamanho);
+            fprintf(file, "SN\n");
+        }
+        else {
+            int j = 0;
+            fprintf(file, "TAM[%d] ", vetorPrincipal[i]->tamanho);
+            while (j < vetorPrincipal[i]->qtdDeElementos) {
+                if (j + 1 == vetorPrincipal[i]->qtdDeElementos) {
+                    fprintf(file, "%d", vetorPrincipal[i]->estruturaAuxiliar[j]);
+                }
+                else {
+                    fprintf(file, "%d ", vetorPrincipal[i]->estruturaAuxiliar[j]);
+                }
+                j++;
+            }
+            fprintf(file, "\n");
+        }
+        i++;
+    }
+    fclose(file);
+    return 1;
+}
+
+//Posicao(1)=> TAM[3] -1 6 3
+//Posicao(2)=> TAM[5] 23 -12 56 3 5
+//Posicao(3)=> Sem elementos!
+//Posicao(4)=> Sem elementos!
+//Posicao(5)=> Sem Estrutura!
+//Posicao(6)=> Sem Estrutura!
+//Posicao(7)=> Sem Estrutura!
+//Posicao(8)=> Sem Estrutura!
+//Posicao(9)=> Sem Estrutura!
+//Posicao(10)=> Sem Estrutura!

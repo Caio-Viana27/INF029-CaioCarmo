@@ -10,6 +10,7 @@ int menu();
 int menu()
 {
     int op;
+    displayEstrutura();
     printf(" _____________________________________________________\n");
     printf("|                                                     |\n");
     printf("| Menu                                                |\n");
@@ -80,23 +81,43 @@ int main()
             ret = criarEstruturaAuxiliar(posicao, tamanho);
             if (ret == SUCESSO)
             {
-                printf("Estrutura criada com sucesso\n");
+                printf(" _____________________________________________________\n");
+                printf("|                                                     |\n");
+                printf("| Estrutura criada com sucesso ###################### |\n");
+                printf("|_____________________________________________________|\n");
+                printf("\n");
             }
             else if (ret == POSICAO_INVALIDA)
             {
+                printf(" _____________________________________________________\n");
+                printf("|                                                     |\n");
+                printf("| A posicao nao eh um valor valido ################## |\n");
+                printf("|_____________________________________________________|\n");
                 printf("A posicao nao eh um valor valido\n");
             }
             else if (ret == SEM_ESPACO_DE_MEMORIA)
             {
+                printf(" _____________________________________________________\n");
+                printf("|                                                     |\n");
+                printf("| Sem espaço de memoria ############################# |\n");
+                printf("|_____________________________________________________|\n");
                 printf("Sem espaço de memoria\n");
             }
             else if (ret == TAMANHO_INVALIDO)
             {
+                printf(" _____________________________________________________\n");
+                printf("|                                                     |\n");
+                printf("| tamanho nao eh um valor valido #################### |\n");
+                printf("|_____________________________________________________|\n");
                 printf("tamanho nao eh um valor valido\n");
             }
             else if (ret == JA_TEM_ESTRUTURA_AUXILIAR)
             {
-                printf("Ja existe um estrutura auxiliar nesta posicao\n");
+                printf(" _____________________________________________________\n");
+                printf("|                                                     |\n");
+                printf("| Ja existe um estrutura auxiliar nesta posicao ##### |\n");
+                printf("|_____________________________________________________|\n");
+                printf("\n");
             }
             break;
         }
@@ -113,7 +134,7 @@ int main()
             printf("| Defina a posicao para inserir na estrutura [1...10] |\n");
             printf("|_____________________________________________________|\n");
             printf("\n");
-            printf("Posição: ");
+            printf("Posicao: ");
             scanf("%d", &posicao);
             getchar();
             printf("\n");

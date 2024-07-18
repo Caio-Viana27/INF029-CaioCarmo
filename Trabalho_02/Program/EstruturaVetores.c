@@ -17,14 +17,14 @@ void displayEstrutura () {
             printf("Sem Estrutura!\n");
         }
         else if (vetorPrincipal[i]->qtdDeElementos < 1) {
-            printf("TAM[%d] => ", vetorPrincipal[i]->tamanho);
+            printf("TAM(%d) => ", vetorPrincipal[i]->tamanho);
             printf("Sem elementos!\n");
         }
         else {
             int j = 0;
-            printf("TAM[%d] => ", vetorPrincipal[i]->tamanho);
+            printf("TAM(%d) => ", vetorPrincipal[i]->tamanho);
             while (j < vetorPrincipal[i]->qtdDeElementos) {
-                printf("[%d] ", vetorPrincipal[i]->estruturaAuxiliar[j]);
+                printf("(%d) ", vetorPrincipal[i]->estruturaAuxiliar[j]);
                 j++;
             }
             printf("\n");
@@ -620,7 +620,7 @@ void finalizar()
     }
 }
 
-int loadData () {    // dataSave\\data.txt
+int loadData () { // Replit VScode dataSave//data.txt
     FILE* file = fopen("dataSave//data.txt", "r");
     if (file == NULL) {
         return 0;
@@ -673,8 +673,8 @@ int loadData () {    // dataSave\\data.txt
     return 1;
 }
 
-int saveData () { // replit dataSave//data.txt | VScode dataSave\\data.txt
-    FILE* file = fopen("dataSave//dataTeste.txt", "w+");
+int saveData () { // Replit VScode dataSave//data.txt
+    FILE* file = fopen("dataSave//data.txt", "w+");
     if (file == NULL) {
         return 0;
     }

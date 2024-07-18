@@ -1,7 +1,7 @@
 Posicao(1)=> TAM(25) 9 5
 Posicao(2)=> TAM(12) SN
 Posicao(3)=> TAM(5) SN
-Posicao(4)=> TAM(3) 12
+Posicao(4)=> TAM(3) 12 0
 Posicao(5)=> SE
 Posicao(6)=> SE
 Posicao(7)=> SE

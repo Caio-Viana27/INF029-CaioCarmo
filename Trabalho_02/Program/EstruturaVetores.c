@@ -607,10 +607,10 @@ void finalizar()
 {
     int save = saveData();
     if (save) {
-        printf("save concluido!");
+        printf("save concluido!\n");
     }
     else {
-        printf("save falhou!");
+        printf("save falhou!\n");
     }
     for ( int i = 0; i < 10; i++) {
         if (vetorPrincipal[i]->estruturaAuxiliar != NULL) {
@@ -621,7 +621,7 @@ void finalizar()
 }
 
 int loadData () {    // dataSave\\data.txt
-    FILE* file = fopen("dataSave\\data.txt", "r");
+    FILE* file = fopen("dataSave//data.txt", "r");
     if (file == NULL) {
         return 0;
     }
@@ -638,7 +638,7 @@ int loadData () {    // dataSave\\data.txt
             while (buffer[j] < '1' || buffer[j] > '9') { j++; }
             int h = 0;
             char temp[11];
-            while (buffer[j] != ']') {
+            while (buffer[j] != ')') {
                 temp[h] = buffer[j];
                 h++;
                 temp[h] = '\0';
@@ -673,8 +673,8 @@ int loadData () {    // dataSave\\data.txt
     return 1;
 }
 
-int saveData () {    // dataSave\\data.txt
-    FILE* file = fopen("dataSave\\data.txt", "w+");
+int saveData () { // replit dataSave//data.txt | VScode dataSave\\data.txt
+    FILE* file = fopen("dataSave//dataTeste.txt", "w+");
     if (file == NULL) {
         return 0;
     }
@@ -686,12 +686,12 @@ int saveData () {    // dataSave\\data.txt
             fprintf(file, "SE\n");
         }
         else if (vetorPrincipal[i]->qtdDeElementos < 1) {
-            fprintf(file, "TAM[%d] ", vetorPrincipal[i]->tamanho);
+            fprintf(file, "TAM(%d) ", vetorPrincipal[i]->tamanho);
             fprintf(file, "SN\n");
         }
         else {
             int j = 0;
-            fprintf(file, "TAM[%d] ", vetorPrincipal[i]->tamanho);
+            fprintf(file, "TAM(%d) ", vetorPrincipal[i]->tamanho);
             while (j < vetorPrincipal[i]->qtdDeElementos) {
                 if (j + 1 == vetorPrincipal[i]->qtdDeElementos) {
                     fprintf(file, "%d", vetorPrincipal[i]->estruturaAuxiliar[j]);
@@ -709,13 +709,13 @@ int saveData () {    // dataSave\\data.txt
     return 1;
 }
 
-//Posicao(1)=> TAM[3] -1 6 3
-//Posicao(2)=> TAM[5] 23 -12 56 3 5
-//Posicao(3)=> Sem elementos!
-//Posicao(4)=> Sem elementos!
-//Posicao(5)=> Sem Estrutura!
-//Posicao(6)=> Sem Estrutura!
-//Posicao(7)=> Sem Estrutura!
-//Posicao(8)=> Sem Estrutura!
-//Posicao(9)=> Sem Estrutura!
-//Posicao(10)=> Sem Estrutura!
+//Posicao(1)=> TAM[25] 9 5
+//Posicao(2)=> TAM[12] SN
+//Posicao(3)=> TAM[5] SN
+//Posicao(4)=> TAM[3] 12
+//Posicao(5)=> SE
+//Posicao(6)=> SE
+//Posicao(7)=> SE
+//Posicao(8)=> SE
+//Posicao(9)=> TAM[5] SN
+//Posicao(10)=> SE

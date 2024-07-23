@@ -25,6 +25,12 @@ typedef struct mainArray {
     int* estruturaAuxiliar;
 } vetor_Principal;
 
+bool ehPosicaoValida(int posicao);
+bool ehTamanhoValido(int tamanho);
+bool existeEstruturaAuxiliar(int posicao);
+bool EstruturaCheia(int posicao);
+bool EstruturaVazia(int posicao);
+bool novoTamanhoEhValido(int posicao, int novoTamanho);
 void displayEstrutura();
 int criarEstruturaAuxiliar(int posicao, int tamanho);
 int inserirNumeroEmEstrutura(int posicao, int valor);
@@ -43,8 +49,10 @@ void destruirListaEncadeadaComCabecote(No **inicio);
 
 void inicializar();
 void finalizar();
+void dobrar(int *x);
+
 int loadData();
 int saveData();
-void dobrar(int *x);
+void displayMessage(int ret);
 
 #endif  // TRABALHO2_ESTRUTURAVETORES_H

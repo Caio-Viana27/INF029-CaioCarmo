@@ -1,10 +1,48 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #define TAM 10
 
 #include "EstruturaVetores.h"
 
 vetor_Principal* vetorPrincipal[TAM];
+
+// se posição é um valor válido {entre 1 e 10} retorna true
+bool ehPosicaoValida(int posicao)
+{
+    if (posicao < 1 || posicao > 10) return false;
+    else return true;
+}
+// se tamanho é um valor válido {maior que 0} retorna true
+bool ehTamanhoValido(int tamanho)
+{
+    if (tamanho < 1) return false;
+    else return true;
+}
+// se existe estrutura na posição 'posição' retorna true
+bool existeEstruturaAuxiliar(int posicao)
+{
+    if (vetorPrincipal[posicao]->estruturaAuxiliar == NULL) return false;
+    else return true;
+}
+// se a estrutura na posição 'posição' esta cheia retorna true
+bool EstruturaCheia(int posicao)
+{
+    if ((vetorPrincipal[posicao]->qtdDeElementos >= vetorPrincipal[posicao]->tamanho)) return true;
+    else return false;
+}
+// se a estrutura na posição 'posição' esta vazia retorna true
+bool EstruturaVazia(int posicao)
+{
+    if ((vetorPrincipal[posicao]->qtdDeElementos == 0)) return true;
+    else return false;
+}
+// se o novo tamanho da estrutura é valido retorna true
+bool novoTamanhoEhValido(int posicao, int novoTamanho)
+{
+    if ((vetorPrincipal[posicao]->tamanho + novoTamanho < 1)) return false;
+    else return true;
+}
 
 /*
 Objetivo: criar estrutura auxiliar na posição 'posicao'.
@@ -19,14 +57,14 @@ Rertono (int)
 */
 int criarEstruturaAuxiliar(int posicao, int tamanho)
 {
-    if (posicao < 1 || posicao > 10) {
+    if (!ehPosicaoValida(posicao)) {
         return POSICAO_INVALIDA;
     }
     posicao -= 1;
-    if (tamanho < 1) {
+    if (!ehTamanhoValido(tamanho)) {
         return TAMANHO_INVALIDO;
     }
-    if (vetorPrincipal[posicao]->estruturaAuxiliar != NULL) {
+    if (existeEstruturaAuxiliar(posicao)) {
         return JA_TEM_ESTRUTURA_AUXILIAR;
     }
     else {
@@ -53,14 +91,14 @@ CONSTANTES
 */
 int inserirNumeroEmEstrutura(int posicao, int valor)
 {
-    if (posicao < 1 || posicao > 10) {
+    if (!ehPosicaoValida(posicao)) {
         return POSICAO_INVALIDA;
     }
     posicao -= 1;
-    if (vetorPrincipal[posicao]->estruturaAuxiliar == NULL) {
+    if (!existeEstruturaAuxiliar(posicao)) {
         return SEM_ESTRUTURA_AUXILIAR;
     }
-    if (vetorPrincipal[posicao]->qtdDeElementos >= vetorPrincipal[posicao]->tamanho) {
+    if (EstruturaCheia(posicao)) {
         return SEM_ESPACO;
     }
     else {
@@ -84,14 +122,14 @@ Rertono (int)
 */
 int excluirNumeroDoFinaldaEstrutura(int posicao)
 {
-    if (posicao < 1 || posicao > 10) {
+    if (!ehPosicaoValida(posicao)) {
         return POSICAO_INVALIDA;
     }
     posicao -= 1;
-    if (vetorPrincipal[posicao]->estruturaAuxiliar == NULL) {
+    if (!existeEstruturaAuxiliar(posicao)) {
         return SEM_ESTRUTURA_AUXILIAR;
     }
-    if (vetorPrincipal[posicao]->qtdDeElementos == 0) {
+    if (EstruturaVazia(posicao)) {
         return ESTRUTURA_AUXILIAR_VAZIA;
     }
     else {
@@ -115,14 +153,14 @@ Rertono (int)
 */
 int excluirNumeroEspecificoDeEstrutura(int posicao, int valor)
 {
-    if (posicao < 1 || posicao > 10) {
+    if (!ehPosicaoValida(posicao)) {
         return POSICAO_INVALIDA;
     }
     posicao -= 1;
-    if (vetorPrincipal[posicao]->estruturaAuxiliar == NULL) {
+    if (!existeEstruturaAuxiliar(posicao)) {
         return SEM_ESTRUTURA_AUXILIAR;
     }
-    if (vetorPrincipal[posicao]->qtdDeElementos == 0) {
+    if (EstruturaVazia(posicao)) {
         return ESTRUTURA_AUXILIAR_VAZIA;
     }
 
@@ -152,19 +190,6 @@ int excluirNumeroEspecificoDeEstrutura(int posicao, int valor)
     return NUMERO_INEXISTENTE;
 }
 
-// se posição é um valor válido {entre 1 e 10}
-int ehPosicaoValida(int posicao)
-{
-    int retorno = 0;
-    if (posicao < 1 || posicao > 10)
-    {
-        retorno = POSICAO_INVALIDA;
-    }
-    else
-        retorno = SUCESSO;
-
-    return retorno;
-}
 /*
 Objetivo: retorna os números da estrutura auxiliar da posição 'posicao (1..10)'.
 os números devem ser armazenados em vetorAux
@@ -176,11 +201,11 @@ Retorno (int)
 */
 int getDadosEstruturaAuxiliar(int posicao, int vetorAux[])
 {
-    if (posicao < 1 || posicao > 10) {
+    if (!ehPosicaoValida(posicao)) {
         return POSICAO_INVALIDA;
     }
     posicao -= 1;
-    if (vetorPrincipal[posicao]->estruturaAuxiliar == NULL) {
+    if (!existeEstruturaAuxiliar(posicao)) {
         return SEM_ESTRUTURA_AUXILIAR;
     }
     else {
@@ -219,11 +244,11 @@ Rertono (int)
 */
 int getDadosOrdenadosEstruturaAuxiliar(int posicao, int vetorAux[])
 {
-    if (posicao < 1 || posicao > 10) {
+    if (!ehPosicaoValida(posicao)) {
         return POSICAO_INVALIDA;
     }
     posicao -= 1;
-    if (vetorPrincipal[posicao]->estruturaAuxiliar == NULL) {
+    if (!existeEstruturaAuxiliar(posicao)) {
         return SEM_ESTRUTURA_AUXILIAR;
     }
     else {
@@ -253,8 +278,7 @@ int getDadosDeTodasEstruturasAuxiliares(int vetorAux[])
     int i = 0;
     int j = 0;
     while (i < TAM) {
-        if (vetorPrincipal[i]->estruturaAuxiliar != NULL &&
-            vetorPrincipal[i]->qtdDeElementos > 0) {
+        if (existeEstruturaAuxiliar(i) && !EstruturaVazia(i)) {
             naoTemEstrtutura = 0;
             int k = 0;
             int size = vetorPrincipal[i]->qtdDeElementos;
@@ -266,11 +290,8 @@ int getDadosDeTodasEstruturasAuxiliares(int vetorAux[])
         }
         i++;
     }
-    if (naoTemEstrtutura) {return TODAS_ESTRUTURAS_AUXILIARES_VAZIAS;}
-    else {
-        //printf("sem ordenacao ");
-        //printVetor (vetorAux, j);
-        return SUCESSO;}
+    if (naoTemEstrtutura) { return TODAS_ESTRUTURAS_AUXILIARES_VAZIAS; }
+    else { return SUCESSO; }
 }
 
 /*
@@ -287,8 +308,7 @@ int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[])
     int i = 0;
     int j = 0;
     while (i < TAM) {
-        if (vetorPrincipal[i]->estruturaAuxiliar != NULL &&
-            vetorPrincipal[i]->qtdDeElementos > 0) {
+        if (existeEstruturaAuxiliar(i) && !EstruturaVazia(i)) {
             naoTemEstrtutura = 0;
             int k = 0;
             int size = vetorPrincipal[i]->qtdDeElementos;
@@ -303,8 +323,6 @@ int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[])
     if (naoTemEstrtutura) {return TODAS_ESTRUTURAS_AUXILIARES_VAZIAS;}
     else {
         insertionSort (j, vetorAux);
-        //printf("com ordenacao ");
-        //printVetor (vetorAux, j);
         return SUCESSO;
     }
 }
@@ -322,14 +340,14 @@ Rertono (int)
 */
 int modificarTamanhoEstruturaAuxiliar(int posicao, int novoTamanho)
 {
-    if (posicao < 1 || posicao > 10) {
+    if (!ehPosicaoValida(posicao)) {
         return POSICAO_INVALIDA;
     }
     posicao -= 1;
-    if (vetorPrincipal[posicao]->estruturaAuxiliar == NULL) {
+    if (!existeEstruturaAuxiliar(posicao)) {
         return SEM_ESTRUTURA_AUXILIAR;
     }
-    if (vetorPrincipal[posicao]->tamanho + novoTamanho < 1) {
+    if (!novoTamanhoEhValido(posicao, novoTamanho)) {
         return NOVO_TAMANHO_INVALIDO;
     }
 
@@ -360,14 +378,14 @@ Retorno (int)
 */
 int getQuantidadeElementosEstruturaAuxiliar(int posicao)
 {
-    if (posicao < 1 || posicao > 10) {
+    if (!ehPosicaoValida(posicao)) {
         return POSICAO_INVALIDA;
     }
     posicao -= 1;
-    if (vetorPrincipal[posicao]->estruturaAuxiliar == NULL) {
+    if (!existeEstruturaAuxiliar(posicao)) {
         return SEM_ESTRUTURA_AUXILIAR;
     }
-    if (vetorPrincipal[posicao]->qtdDeElementos < 1) {
+    if (EstruturaVazia(posicao)) {
         return ESTRUTURA_AUXILIAR_VAZIA;
     }
     return vetorPrincipal[posicao]->qtdDeElementos;
@@ -402,8 +420,8 @@ No *montarListaEncadeadaComCabecote()
 
     int i = 0;
     while (i < TAM) {
-        if (vetorPrincipal[i]->estruturaAuxiliar != NULL &&
-            vetorPrincipal[i]->qtdDeElementos > 0) {
+        if (/* vetorPrincipal[i]->estruturaAuxiliar != NULL */existeEstruturaAuxiliar(i) &&
+            /* vetorPrincipal[i]->qtdDeElementos > 0 */!EstruturaVazia(i)) {
             int j  = 0;
             while (j < vetorPrincipal[i]->qtdDeElementos) {
                 createNode(lista, vetorPrincipal[i]->estruturaAuxiliar[j]);

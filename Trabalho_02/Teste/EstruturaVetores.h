@@ -25,6 +25,13 @@ typedef struct mainArray {
     int* estruturaAuxiliar;
 } vetor_Principal;
 
+bool ehPosicaoValida(int posicao);
+bool ehTamanhoValido(int tamanho);
+bool existeEstruturaAuxiliar(int posicao);
+bool EstruturaCheia(int posicao);
+bool EstruturaVazia(int posicao);
+bool novoTamanhoEhValido(int posicao, int novoTamanho);
+
 int criarEstruturaAuxiliar(int posicao, int tamanho);
 int inserirNumeroEmEstrutura(int posicao, int valor);
 int excluirNumeroDoFinaldaEstrutura(int posicao);

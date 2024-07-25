@@ -22,8 +22,6 @@ int menu()
     printf("| 2 - Inserir                                         |\n");
     printf("| 3 - Excluir                                         |\n");
     printf("| 4 - Modificar tamanho de uma estrutura              |\n");
-    printf("| 5 - Dobrar Numero                                   |\n");
-    printf("| 6 - Exibir todas as estruturas                      |\n");
     printf("|_____________________________________________________|\n");
     printf("\n");
     printf("Opcao: ");
@@ -182,50 +180,6 @@ int main()
             // ret = POSICAO_INVALIDA
             // ret = NOVO_TAMANHO_INVALIDO
             // ret = SEM_ESPACO_DE_MEMORIA
-            break;
-        }
-        case 5:
-        { //dobrar
-            //ler um numero
-            int valor;
-            scanf("%i", &valor);
-
-            //dobrar(&valor);
-
-            //passar para um funcao (void dobrar(...)) que recebe o numero e dobra (EstruturaVetores.c)
-
-            printf("%i", valor);
-
-            break;
-        }
-        case 6:
-        { //recuperar dados estrutura auxiliar
-            int posicao, retorno;
-            printf("Qual a estrutura a ser listada (1..10)?\n");
-            scanf("%d", &posicao);
-
-            int qtd = getQuantidadeElementosEstruturaAuxiliar(posicao);
-
-            if (qtd == POSICAO_INVALIDA)
-            {
-                printf("Posicao invalida\n");
-            }
-            else
-            { // existe elemento
-                int vetorAux[qtd];
-
-                retorno = getDadosEstruturaAuxiliar(posicao, vetorAux);
-
-                if (retorno == SUCESSO)
-                {
-                    //imprimir os dados para o usuário
-                    int i = 0;
-                    for (; i < qtd; i++)
-                    {
-                        printf("%d", vetorAux[i]);
-                    }
-                }
-            }
             break;
         }
         default:

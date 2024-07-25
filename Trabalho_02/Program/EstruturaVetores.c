@@ -57,19 +57,19 @@ bool existeEstruturaAuxiliar(int posicao)
 // se a estrutura na posição 'posição' esta cheia retorna true
 bool EstruturaCheia(int posicao)
 {
-    if ((vetorPrincipal[posicao]->qtdDeElementos >= vetorPrincipal[posicao]->tamanho)) return true;
+    if (vetorPrincipal[posicao]->qtdDeElementos >= vetorPrincipal[posicao]->tamanho) return true;
     else return false;
 }
 // se a estrutura na posição 'posição' esta vazia retorna true
 bool EstruturaVazia(int posicao)
 {
-    if ((vetorPrincipal[posicao]->qtdDeElementos == 0)) return true;
+    if (vetorPrincipal[posicao]->qtdDeElementos == 0) return true;
     else return false;
 }
 // se o novo tamanho da estrutura é valido retorna true
 bool novoTamanhoEhValido(int posicao, int novoTamanho)
 {
-    if ((vetorPrincipal[posicao]->tamanho + novoTamanho < 1)) return false;
+    if (vetorPrincipal[posicao]->tamanho + novoTamanho < 1) return false;
     else return true;
 }
 
@@ -403,8 +403,7 @@ int getDadosDeTodasEstruturasAuxiliares(int vetorAux[])
     int i = 0;
     int j = 0;
     while (i < TAM) {
-        if (/* vetorPrincipal[i]->estruturaAuxiliar != NULL  */existeEstruturaAuxiliar(i) &&
-            /* vetorPrincipal[i]->qtdDeElementos > 0 */ !EstruturaVazia(i)) {
+        if (existeEstruturaAuxiliar(i) && !EstruturaVazia(i)) {
             naoTemEstrtutura = 0;
             int k = 0;
             int size = vetorPrincipal[i]->qtdDeElementos;
@@ -434,8 +433,7 @@ int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[])
     int i = 0;
     int j = 0;
     while (i < TAM) {
-        if (/* vetorPrincipal[i]->estruturaAuxiliar != NULL */existeEstruturaAuxiliar(i) &&
-            /* vetorPrincipal[i]->qtdDeElementos > 0 */!EstruturaVazia(i)) {
+        if (existeEstruturaAuxiliar(i) && !EstruturaVazia(i)) {
             naoTemEstrtutura = 0;
             int k = 0;
             int size = vetorPrincipal[i]->qtdDeElementos;
@@ -547,8 +545,7 @@ No *montarListaEncadeadaComCabecote()
 
     int i = 0;
     while (i < TAM) {
-        if (/* vetorPrincipal[i]->estruturaAuxiliar != NULL */existeEstruturaAuxiliar(i) &&
-            /* vetorPrincipal[i]->qtdDeElementos > 0 */!EstruturaVazia(i)) {
+        if (existeEstruturaAuxiliar(i) && !EstruturaVazia(i)) {
             int j  = 0;
             while (j < vetorPrincipal[i]->qtdDeElementos) {
                 createNode(lista, vetorPrincipal[i]->estruturaAuxiliar[j]);

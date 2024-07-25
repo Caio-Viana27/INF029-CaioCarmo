@@ -28,13 +28,13 @@ bool existeEstruturaAuxiliar(int posicao)
 // se a estrutura na posição 'posição' esta cheia retorna true
 bool EstruturaCheia(int posicao)
 {
-    if ((vetorPrincipal[posicao]->qtdDeElementos >= vetorPrincipal[posicao]->tamanho)) return true;
+    if (vetorPrincipal[posicao]->qtdDeElementos >= vetorPrincipal[posicao]->tamanho) return true;
     else return false;
 }
 // se a estrutura na posição 'posição' esta vazia retorna true
 bool EstruturaVazia(int posicao)
 {
-    if ((vetorPrincipal[posicao]->qtdDeElementos == 0)) return true;
+    if (vetorPrincipal[posicao]->qtdDeElementos == 0) return true;
     else return false;
 }
 // se o novo tamanho da estrutura é valido retorna true
@@ -420,8 +420,7 @@ No *montarListaEncadeadaComCabecote()
 
     int i = 0;
     while (i < TAM) {
-        if (/* vetorPrincipal[i]->estruturaAuxiliar != NULL */existeEstruturaAuxiliar(i) &&
-            /* vetorPrincipal[i]->qtdDeElementos > 0 */!EstruturaVazia(i)) {
+        if (existeEstruturaAuxiliar(i) && !EstruturaVazia(i)) {
             int j  = 0;
             while (j < vetorPrincipal[i]->qtdDeElementos) {
                 createNode(lista, vetorPrincipal[i]->estruturaAuxiliar[j]);

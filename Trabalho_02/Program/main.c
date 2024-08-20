@@ -22,6 +22,8 @@ int menu()
     printf("| 2 - Inserir                                         |\n");
     printf("| 3 - Excluir                                         |\n");
     printf("| 4 - Modificar tamanho de uma estrutura              |\n");
+    printf("| 5 - Soma Especial                                   |\n");
+    printf("| 6 - Montar lista encadeada                          |\n");
     printf("|_____________________________________________________|\n");
     printf("\n");
     printf("Opcao: ");
@@ -180,6 +182,22 @@ int main()
             // ret = POSICAO_INVALIDA
             // ret = NOVO_TAMANHO_INVALIDO
             // ret = SEM_ESPACO_DE_MEMORIA
+            break;
+        }
+        case 5:
+        {
+            int somaA = 0;
+            int somaB = 0;
+            somaEspecial(&somaA, &somaB);
+            printf("%d, %d\n", somaA, somaB);
+            break;
+        }
+        case 6:
+        {
+            No *inicio = NULL;
+            printf("0k case 6");
+            lerVetorPrincipal(inicio);
+            destruirListaEncadeadaComCabecote(&inicio);
             break;
         }
         default:

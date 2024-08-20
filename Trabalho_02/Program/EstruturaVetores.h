@@ -55,4 +55,9 @@ int loadData();
 int saveData();
 void displayMessage(int ret);
 
+void somaEspecial(int *somaA, int *somaB /* vetor_Principal* vetorPrincipal[] */);
+void imprimirListaEncadeada(No *inicio);
+void lerVetorPrincipal(No *inicio);
+No *montarListaEncadeada(No *inicio, int num);
+
 #endif  // TRABALHO2_ESTRUTURAVETORES_H

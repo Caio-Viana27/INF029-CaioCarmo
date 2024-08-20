@@ -274,12 +274,12 @@ Retorno (int)
 */
 int getDadosDeTodasEstruturasAuxiliares(int vetorAux[])
 {
-    int naoTemEstrtutura = 1;
+    bool naoTemEstrtutura = true;
     int i = 0;
     int j = 0;
     while (i < TAM) {
         if (existeEstruturaAuxiliar(i) && !EstruturaVazia(i)) {
-            naoTemEstrtutura = 0;
+            naoTemEstrtutura = false;
             int k = 0;
             int size = vetorPrincipal[i]->qtdDeElementos;
             while (k < size) {
@@ -304,12 +304,12 @@ Retorno (int)
 */
 int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[])
 {
-    int naoTemEstrtutura = 1;
+    bool naoTemEstrtutura = true;
     int i = 0;
     int j = 0;
     while (i < TAM) {
         if (existeEstruturaAuxiliar(i) && !EstruturaVazia(i)) {
-            naoTemEstrtutura = 0;
+            naoTemEstrtutura = false;
             int k = 0;
             int size = vetorPrincipal[i]->qtdDeElementos;
             while (k < size) {

@@ -12,17 +12,17 @@ void testQ5();
 void testQ6();
 
 int main(){
-    printf("q1\n");
+    //pridntf("q1\n");
     testQ1(); // 10 testes
-    printf("q2\n");
+    //pridntf("q2\n");
     testQ2(); // 35 testes
-    printf("q3\n");
+    //prindtf("q3\n");
     testQ3(); // 13 testes
-    printf("q4\n");
+    //prdintf("q4\n");
     testQ4(); // 22 testes
-    printf("q5\n");
+    //prdintf("q5\n");
     testQ5(); // 10 testes
-    printf("q6\n");
+    //prdintf("q6\n");
     testQ6(); // 10 testes 
 
 
@@ -43,9 +43,9 @@ void testQ1(){
     strcpy(str,"1/9/2016");
     printf("%d\n",q1(str) == 1);
     strcpy(str,"//2016");
-    printf("%d\n",q1(str) == 0); //
+    printf("%d\n",q1(str) == 0);
     strcpy(str,"1//20");
-    printf("%d\n",q1(str) == 0); //
+    printf("%d\n",q1(str) == 0);
     strcpy(str,"1/R/2016");
     printf("%d\n",q1(str) == 0);
     strcpy(str,"1/12/19");
@@ -60,7 +60,6 @@ void testQ2(){
     int retorno;
 
     //teste 1
-    //printf("teste 1\n");
     qtdDias = -1;
     qtdMeses = -1;
     qtdAnos = -1;
@@ -74,7 +73,6 @@ void testQ2(){
     printf("%d\n", dma.qtdAnos == 1);
 
     //teste 2 - retornos
-    //printf("teste 2\n");
     qtdDias = -1;
     qtdMeses = -1;
     qtdAnos = -1;
@@ -95,7 +93,6 @@ void testQ2(){
     printf("%d\n",dma.retorno == 4);
 
     //teste 3
-    //printf("teste 3\n");
     qtdDias = -1;
     qtdMeses = -1;
     qtdAnos = -1;
@@ -109,7 +106,6 @@ void testQ2(){
     printf("%d\n",dma.qtdAnos == 0);
 
     //teste 4
-    //printf("teste 4\n");
     qtdDias = -1;
     qtdMeses = -1;
     qtdAnos = -1;
@@ -118,12 +114,11 @@ void testQ2(){
     strcpy(datafinal,"05/07/2018");
     dma = q2(datainicial, datafinal);
     printf("%d\n",dma.retorno == 1);
-    printf("%d\n",dma.qtdDias == 29); //
-    printf("%d\n",dma.qtdMeses == 0); //
+    printf("%d\n",dma.qtdDias == 29);
+    printf("%d\n",dma.qtdMeses == 0);
     printf("%d\n",dma.qtdAnos == 1);
 
     //teste 5
-    //printf("teste 5\n");
     qtdDias = -1;
     qtdMeses = -1;
     qtdAnos = -1;
@@ -137,7 +132,6 @@ void testQ2(){
     printf("%d\n",dma.qtdAnos == 0);
 
     //teste 6
-    //printf("teste 6\n");
     qtdDias = -1;
     qtdMeses = -1;
     qtdAnos = -1;
@@ -150,8 +144,7 @@ void testQ2(){
     printf("%d\n",dma.qtdMeses == 1);
     printf("%d\n",dma.qtdAnos == 0);
 
-    //teste 7
-    //printf("teste 7\n");
+    //teste 8
     qtdDias = -1;
     qtdMeses = -1;
     qtdAnos = -1;
@@ -164,8 +157,7 @@ void testQ2(){
     printf("%d\n",dma.qtdMeses == 0);
     printf("%d\n",dma.qtdAnos == 1);
 
-    //teste 8
-    //printf("teste 8\n");
+    //teste 9
     qtdDias = -1;
     qtdMeses = -1;
     qtdAnos = -1;
@@ -178,8 +170,7 @@ void testQ2(){
     printf("%d\n",dma.qtdMeses == 0);
     printf("%d\n",dma.qtdAnos == 1);
 
-    //teste 9
-    //printf("teste 9\n");
+    //teste 10
     qtdDias = -1;
     qtdMeses = -1;
     qtdAnos = -1;
@@ -258,15 +249,15 @@ void testQ4(){
     }
     strcpy(strTexto,"maraaaavilha, meu prograaaama funcionou");
     strcpy(strBusca,"aa");
-    printf("%d\n",q4(strTexto, strBusca, posicoes) == 4);//
+    printf("%d\n",q4(strTexto, strBusca, posicoes) == 4);
     printf("%d\n",posicoes[0]==4);
     printf("%d\n",posicoes[1]==5);
-    printf("%d\n",posicoes[2]==6);//
-    printf("%d\n",posicoes[3]==7);//
-    printf("%d\n",posicoes[4]==24);//
-    printf("%d\n",posicoes[5]==25);//
-    printf("%d\n",posicoes[6]==26);//
-    printf("%d\n",posicoes[7]==27);//
+    printf("%d\n",posicoes[2]==6);
+    printf("%d\n",posicoes[3]==7);
+    printf("%d\n",posicoes[4]==24);
+    printf("%d\n",posicoes[5]==25);
+    printf("%d\n",posicoes[6]==26);
+    printf("%d\n",posicoes[7]==27);
 
 }
 

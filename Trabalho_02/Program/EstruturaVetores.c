@@ -610,7 +610,7 @@ Posicao(9)=> TAM(5) SN
 Posicao(10)=> TAM(9) SN
  */
 int loadData () { // Replit VScode dataSave//data.txt
-    FILE* file = fopen("dataSave//data.txt", "r");
+    FILE* file = fopen("dataSave//dadosAv2.txt", "r");
     if (file == NULL) {
         return 0;
     }
@@ -694,7 +694,7 @@ void inicializar()
 
 // salva os dados em um arquivo.txt
 int saveData () { // Replit VScode dataSave//data.txt
-    FILE* file = fopen("dataSave//data.txt", "w+");
+    FILE* file = fopen("dataSave//dadosAv2.txt", "w+");
     if (file == NULL) {
         return 0;
     }
@@ -861,4 +861,138 @@ void displayMessage (int ret) {
         printf("\n");
         return;
     }
+}
+
+// Questao 1 da Av2 de 2016.2
+
+void somaEspecial(int *somaA, int *somaB /* vetor_Principal* vetorPrincipal[] */)
+{
+    int posOdd = 1;
+    int posEven = 2;
+    int somaPosOdd = 0;
+    int somaPosEven = 0;
+
+    while (posOdd < TAM) // soma das posicoes impares, elementos pares
+    {
+        if (vetorPrincipal[posOdd-1]->estruturaAuxiliar != NULL)
+        {
+            for(int i = 0; i < vetorPrincipal[posOdd-1]->qtdDeElementos; i++)
+            {
+                if (vetorPrincipal[posOdd-1]->estruturaAuxiliar[i] % 2 == 0)
+                {
+                    somaPosOdd += vetorPrincipal[posOdd-1]->estruturaAuxiliar[i];
+                }
+            }
+        }
+        posOdd += 2;
+    }
+
+    while (posEven <= TAM) // soma das posicoes pares, elementos ímpares
+    {
+        if (vetorPrincipal[posEven-1]->estruturaAuxiliar != NULL)
+        {
+            for(int i = 0; i < vetorPrincipal[posEven-1]->qtdDeElementos; i++)
+            {
+                if (vetorPrincipal[posEven-1]->estruturaAuxiliar[i] % 2 != 0)
+                {
+                    somaPosEven += vetorPrincipal[posEven-1]->estruturaAuxiliar[i];
+                }
+            }
+        }
+        posEven += 2;
+    }
+    *somaA = somaPosOdd - somaPosEven;
+
+    for (int i = 0; i < TAM; i++)
+    {
+        if (vetorPrincipal[i]->estruturaAuxiliar != NULL)
+        {
+            if (vetorPrincipal[i]->qtdDeElementos > 1)
+            {
+                int negativos = 0;
+                for(int j = 0; j < vetorPrincipal[i]->qtdDeElementos; j++)
+                {
+                    if (vetorPrincipal[i]->estruturaAuxiliar[j] < 0)
+                        negativos++;
+                }
+                if (negativos > 1)
+                {
+                    for(int j = 0; j < vetorPrincipal[i]->qtdDeElementos; j++)
+                    {
+                        *somaB += vetorPrincipal[i]->estruturaAuxiliar[j];
+                    }
+                }
+            }
+        }
+    }
+}
+
+No *montarListaEncadeada(No *inicio, int num)
+{
+    No *newNode = malloc(sizeof(No));
+    newNode->conteudo = num;
+
+    if (inicio == NULL)
+    {
+        newNode->prox = NULL;
+        inicio = newNode;
+    }
+    else
+    {
+        if (inicio->conteudo > newNode->conteudo)
+        {
+            newNode->prox = inicio;
+            inicio = newNode;
+        }
+        else
+        {
+            No *anterior = inicio;
+            No *atual = inicio->prox;
+            while (atual != NULL && atual->conteudo <= newNode->conteudo)
+            {
+                anterior = atual;
+                atual = atual->prox;
+            }
+            if (atual == NULL)
+            {
+                anterior->prox = newNode;
+            }
+            else
+            {
+                newNode->prox = anterior->prox;
+                anterior->prox = newNode;
+            }
+        }
+    }
+    return inicio;
+}
+
+void lerVetorPrincipal(No *inicio) {
+    printf("0k entrada");
+    for(int i = 0; i < TAM; i++)
+    {
+        if (vetorPrincipal[i]->estruturaAuxiliar != NULL)
+        {
+            if (vetorPrincipal[i]->qtdDeElementos > 0)
+            {
+                printf("ok leitura");
+                for(int j = 0; j < vetorPrincipal[i]->qtdDeElementos; j++)
+                {
+                    inicio = montarListaEncadeada(inicio, vetorPrincipal[i]->estruturaAuxiliar[j]);
+                }
+            }
+        }
+    }
+    printf("0k");
+    imprimirListaEncadeada(inicio);
+}
+
+void imprimirListaEncadeada(No *inicio) {
+
+    if (inicio != NULL)
+    {
+        printf("%d ", inicio->conteudo);
+        imprimirListaEncadeada(inicio->prox);
+    }
+    return;
 }

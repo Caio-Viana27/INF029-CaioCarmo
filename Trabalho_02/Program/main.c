@@ -5,7 +5,7 @@
 
 int menu();
 
-//void dobrar(int *x);
+// void dobrar(int *x);
 
 int menu()
 {
@@ -23,7 +23,8 @@ int menu()
     printf("| 3 - Excluir                                         |\n");
     printf("| 4 - Modificar tamanho de uma estrutura              |\n");
     printf("| 5 - Soma Especial                                   |\n");
-    printf("| 6 - Montar lista encadeada                          |\n");
+    printf("| 6 - Montar lista ordenada                           |\n");
+    printf("| 7 - Montar lista ordednada ( media )                |\n");
     printf("|_____________________________________________________|\n");
     printf("\n");
     printf("Opcao: ");
@@ -50,7 +51,7 @@ int main()
             finalizar();
             break;
         }
-        case 1: //criar esturtura auxiliar
+        case 1: // criar esturtura auxiliar
         {
             int posicao;
             int tamanho;
@@ -78,7 +79,7 @@ int main()
             system("clear");
 
             ret = criarEstruturaAuxiliar(posicao, tamanho);
-            displayMessage (ret);
+            displayMessage(ret);
             // ret SUCESSO
             // ret POSICAO_INVALIDA
             // ret SEM_ESPACO_DE_MEMORIA
@@ -86,7 +87,7 @@ int main()
             // ret == JA_TEM_ESTRUTURA_AUXILIAR
             break;
         }
-        case 2: //inserir
+        case 2: // inserir
         {
             int posicao;
             int valor;
@@ -114,13 +115,13 @@ int main()
             system("clear");
 
             ret = inserirNumeroEmEstrutura(posicao, valor);
-            displayMessage (ret);
+            displayMessage(ret);
             // ret == SUCESSO
             // ret == SEM_ESPACO
             // ret == SEM_ESTRUTURA_AUXILIAR
             break;
         }
-        case 3: //excluir
+        case 3: // excluir
         {
             int opcao;
             printf(" _____________________________________________________\n");
@@ -138,7 +139,7 @@ int main()
             system("clear");
 
             ret = excluir(opcao);
-            displayMessage (ret);
+            displayMessage(ret);
             // ret == SUCESSO
             // ret == ESTRUTURA_AUXILIAR_VAZIA
             // ret == SEM_ESTRUTURA_AUXILIAR
@@ -176,7 +177,7 @@ int main()
             system("clear");
 
             ret = modificarTamanhoEstruturaAuxiliar(posicao, novoTamanho);
-            displayMessage (ret);
+            displayMessage(ret);
             // ret = SUCESSO
             // ret = SEM_ESTRUTURA_AUXILIAR
             // ret = POSICAO_INVALIDA
@@ -195,9 +196,15 @@ int main()
         case 6:
         {
             No *inicio = NULL;
-            printf("0k case 6");
             lerVetorPrincipal(inicio);
             destruirListaEncadeadaComCabecote(&inicio);
+            break;
+        }
+        case 7:
+        {
+            No *inicio = NULL;
+            inicio = listaOrdenada(inicio);
+            deallocMemory(&inicio);
             break;
         }
         default:

@@ -1,0 +1,10 @@
+Posicao(1)=> TAM(2) 5
+Posicao(2)=> TAM(4) 3 4
+Posicao(3)=> SE
+Posicao(4)=> TAM(6) 2 10 35 1
+Posicao(5)=> TAM(3) 6 18
+Posicao(6)=> SE
+Posicao(7)=> TAM(5) -1 17 -16 3
+Posicao(8)=> SE
+Posicao(9)=> SE
+Posicao(10)=> SE
